@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>피카플레이 QR로그인 이벤트 - 매주 50,000 마일리지 증정!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="event_qr_v2.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+  SECTION 1 — HERO (DARK)
+══════════════════════════════════════ -->
+  <section class="hero">
+    <canvas id="particles"></canvas>
+    <div class="hero__glow-1"></div>
+    <div class="hero__glow-2"></div>
+
+    <div class="hero__content">
+      <!-- 상단 뱃지 -->
+      <div class="hero__badge">
+        <div id="lottie-gift" class="hero__badge-icon"></div>
+        피카플레이 QR로그인 이벤트
+      </div>
+
+      <!-- 메인 타이틀 -->
+      <h1 class="hero__title">
+        매주 <span class="hero__gold" id="counter" data-target="50000">0</span><br class="hero__title-break"> 마일리지 증정!
+      </h1>
+
+      <div class="key-visual-container">
+        <!-- 키 비주얼: 3단계 -->
+        <div class="key-visual">
+          <div class="key-visual__item">
+            <div class="key-visual__img">
+              <img src="assets/img_hero_lottery.png" ƒalt="QR 로그인">
+            </div>
+            <p class="key-visual__label">QR 로그인 시 자동 응모</p>
+          </div>
+
+          <div class="key-visual__arrow">
+            <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+              <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="key-visual__item">
+            <div class="key-visual__img">
+              <img src="assets/img_hero_lottery.png" alt="추첨">
+            </div>
+            <p class="key-visual__label">매주 7인 추첨</p>
+          </div>
+
+          <div class="key-visual__arrow">
+            <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+              <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="key-visual__item">
+            <div class="key-visual__img">
+              <img src="assets/img_hero_lottery.png" alt="마일리지 지급">
+            </div>
+            <p class="key-visual__label">5만 마일리지 지급</p>
+          </div>
+        </div>
+
+        <!-- QR 당첨확률 카드 -->
+        <div class="glass-card">
+          <div class="glass-card__qr" id="qr-lottie"></div>
+          <div class="glass-card__text">
+            <p class="glass-card__title">
+              <strong>QR 로그인 이용 횟수</strong>가 많을수록<br>
+              <strong>당첨 확률</strong>이 올라가요!
+            </p>
+            <p class="glass-card__desc">스마트폰 기본 카메라로도 로그인이 가능해요.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 아래 화살표 -->
+      <div class="hero__arrow">
+        <div id="arrow-down-lottie" style="width:150px;height:150px;"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+  SECTION 2 — QR 로그인 이용하기 (WHITE)
+══════════════════════════════════════ -->
+  <section class="section section--white" id="qr-how">
+    <div class="container">
+      <div class="section__hd" data-aos>
+        <span class="section__label">이벤트 참가방법</span>
+        <h2 class="section__title">QR 로그인 이용하기</h2>
+      </div>
+
+      <div class="steps-row">
+        <div class="step-circle" data-aos data-delay="1">
+          <div class="step-circle__badge">STEP 1</div>
+          <div class="step-circle__img">
+            <img src="assets/img_qr_login_step1.png" alt="회원가입">
+          </div>
+          <p class="step-circle__desc">피카플레이 App<br>회원가입 &amp; 로그인</p>
+        </div>
+
+        <div class="step-arrow" data-aos>
+          <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+            <path d="M0 0 L16 15 L0 30" stroke="#151518" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-circle" data-aos data-delay="2">
+          <div class="step-circle__badge">STEP 2</div>
+          <div class="step-circle__img">
+            <img src="assets/img_qr_login_step2.png" alt="로그인">
+          </div>
+          <p class="step-circle__desc">PC방 회원 자리에서<br>QR로 로그인!</p>
+        </div>
+
+        <div class="step-arrow" data-aos>
+          <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+            <path d="M0 0 L16 15 L0 30" stroke="#151518" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-circle" data-aos data-delay="3">
+          <div class="step-circle__badge">STEP 3</div>
+          <div class="step-circle__img">
+            <img src="assets/img_qr_login_step3.png" alt="이벤트 참가">
+          </div>
+          <p class="step-circle__desc">이벤트 자동 참가 &amp;<br>즐겁게 PC방 이용</p>
+        </div>
+      </div>
+
+      <div class="info-banner" data-aos>
+        <img src="https://www.figma.com/api/mcp/asset/401774b6-0ba4-4e09-8b7e-5f67d57a05b5" alt="info"
+          class="info-banner__icon">
+        <span>첫 방문 매장인 경우 PC방 ID와 연동이 필요합니다.</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+  SECTION 3 — 마일리지 혜택 (LIGHT BG)
+══════════════════════════════════════ -->
+  <section class="section section--light" id="benefits">
+    <div class="container">
+      <!-- 타이틀 -->
+      <div class="section__hd section__hd--coins" data-aos>
+        <div class="coins-left">
+          <img src="assets/coin_back.png" alt="" class="coin coin--back">
+          <img src="assets/coin_left.png" alt="" class="coin coin--front">
+        </div>
+        <div class="coins-center">
+          <span class="section__label">게임, 미션, 이벤트 등 다양하게!</span>
+          <h2 class="section__title">가볍게 즐기고 빵빵하게 받는<br>피카플레이 앱 마일리지!</h2>
+        </div>
+        <div class="coins-right">
+          <img src="assets/coin_right.png" alt="" class="coin coin--right">
+        </div>
+      </div>
+
+      <!-- 매일 받아요 -->
+      <div class="benefit-row" data-aos>
+        <div class="benefit-row__img">
+          <img src="assets/img_daily_benefits.png" alt="매일 받아요">
+        </div>
+        <div class="benefit-row__text">
+          <div class="benefit-row__titles">
+            <h3 class="benefit-row__title">매일 받아요</h3>
+            <p class="benefit-row__desc">하루 한 번 소소하게 챙기는 마일리지!</p>
+          </div>
+          <div class="tag-group">
+            <span class="tag tag--filled" style="gap:5px;">
+              <img src="assets/icon_daily_attendance.png" alt="" class="tag_icon_daily">
+              출석체크
+            </span>
+            <span class="tag tag--filled" style="gap:5px;">
+              <img src="assets/icon_daily_roulette.png" alt="" class="tag_icon_daily">
+              행운의 룰렛
+            </span>
+            <span class="tag tag--filled" style="gap:5px;">
+              <img src="assets/icon_daily_fortune.png" alt="" class="tag_icon_daily">
+              오늘의 운세
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 재밌게 받아요 -->
+      <div class="benefit-row benefit-row--reverse" data-aos>
+        <div class="benefit-row__text">
+          <div class="benefit-row__titles">
+            <h3 class="benefit-row__title">재밌게 받아요</h3>
+            <p class="benefit-row__desc">다양한 게임을 무료로 즐기면서 챙기는 마일리지!</p>
+          </div>
+          <div class="tag-group tag-group--grid">
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_dalgoona.png" alt="" class="tag_icon_funny">
+              달고나 게임
+            </span>
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_omok.png" alt="" class="tag_icon_funny">
+              오목
+            </span>
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_mole.png" alt="" class="tag_icon_funny">
+              두더지 잡기
+            </span>
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_jumping.png" alt="" class="tag_icon_funny">
+              점핑캣
+            </span>
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_color.png" alt="" class="tag_icon_funny">
+              다른색 찾기
+            </span>
+            <span class="tag tag--outline">
+              <img src="assets/icon_game_today.png" alt="" class="tag_icon_funny">
+              오늘의 게임
+            </span>
+          </div>
+        </div>
+        <div class="benefit-row__img">
+          <img src="assets/img_fun_games.png" alt="재밌게 받아요">
+        </div>
+      </div>
+
+      <!-- 다양하게 받아요 -->
+      <div class="benefit-row benefit-row--col" data-aos>
+        <div class="benefit-row__img">
+          <img src="assets/img_diverse_benefits.png" alt="다양하게 받아요">
+        </div>
+        <div class="benefit-row__text">
+          <div class="benefit-row__titles">
+            <h3 class="benefit-row__title">다양하게 받아요</h3>
+            <p class="benefit-row__desc">미션 참여하고 받는 푸짐한 마일리지!</p>
+          </div>
+          <div class="tag-group tag-group--row">
+            <span class="tag tag--yellow" style="gap: 5px;">
+              <img src="assets/icon_mission_normal.png" alt="" class="tag_mission">
+              일반 미션
+            </span>
+            <span class="tag tag--dark" style="gap: 5px;">
+              <img src="assets/icon_mission_game.png" alt="" class="tag_mission">
+              게임 미션
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모르면 손해 -->
+      <div class="bonus-section" data-aos>
+        <h3 class="bonus-section__title">모르면 손해</h3>
+        <p class="bonus-section__desc">다양한 PC게임 이벤트도 마련되어 있어요!</p>
+        <div class="card-carousel" id="cardCarousel">
+          <div class="card-carousel__track">
+            <div class="card-carousel__item">
+              <img src="assets/img_game_card1.png" alt="게임1">
+            </div>
+            <div class="card-carousel__item">
+              <img src="assets/img_game_card2.png" alt="게임2">
+            </div>
+            <div class="card-carousel__item">
+              <img src="assets/img_game_card3.png" alt="게임3">
+            </div>
+            <div class="card-carousel__item">
+              <img src="assets/img_game_card4.png" alt="게임4">
+            </div>
+            <div class="card-carousel__item">
+              <img src="assets/img_game_card5.png" alt="게임5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+  SECTION 4 — 혜택존 이용하기 (WHITE)
+══════════════════════════════════════ -->
+  <section class="section section--white" id="app-how">
+    <div class="container">
+      <div class="section__hd" data-aos>
+        <span class="section__label">혜택박스 이용방법</span>
+        <h2 class="section__title">피카플레이 혜택존 이용하기</h2>
+      </div>
+
+      <div class="steps-row">
+        <div class="step-circle" data-aos data-delay="1">
+          <div class="step-circle__badge">STEP 1</div>
+          <div class="step-circle__img">
+            <img src="assets/img_how_step1.png" alt="회원가입">
+          </div>
+          <p class="step-circle__desc">피카플레이 App<br>회원가입 &amp; 로그인</p>
+        </div>
+
+        <div class="step-arrow" data-aos>
+          <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+            <path d="M0 0 L16 15 L0 30" stroke="#151518" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-circle" data-aos data-delay="2">
+          <div class="step-circle__badge">STEP 2</div>
+          <div class="step-circle__img">
+            <img src="assets/img_how_step2.png" alt="혜택박스">
+          </div>
+          <p class="step-circle__desc">메뉴에서<br>혜택박스 선택!</p>
+        </div>
+
+        <div class="step-arrow" data-aos>
+          <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+            <path d="M0 0 L16 15 L0 30" stroke="#151518" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-circle" data-aos data-delay="3">
+          <div class="step-circle__badge">STEP 3</div>
+          <div class="step-circle__img">
+            <img src="assets/img_how_step3.png" alt="이벤트 참여">
+          </div>
+          <p class="step-circle__desc">원하는 이벤트<br>마음껏 참여하기!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+  FOOTER
+══════════════════════════════════════ -->
+  <footer class="footer">
+    <canvas id="footer-particles"></canvas>
+    <div class="footer__content">
+      <p>&copy; PICAPLAY. All rights reserved.</p>
+      <p>이벤트 관련 문의사항은 고객센터를 이용해 주세요.</p>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+  SCRIPTS
+══════════════════════════════════════ -->
+  <script>
+    /* ── 1. Particle Canvas ─────────────── */
+    (function () {
+      function initParticles(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+          canvas.width = canvas.parentElement.offsetWidth;
+          canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        class Particle {
+          constructor() { this.reset(); }
+          reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.r = Math.random() * 2.5 + 0.5;
+            this.alpha = Math.random() * 0.8 + 0.1;
+            this.vx = (Math.random() - 0.5) * 0.2;
+            this.vy = -(Math.random() * 0.3 + 0.05);
+            this.life = 0;
+            this.maxLife = Math.random() * 400 + 200;
+          }
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            this.life++;
+            const t = this.life / this.maxLife;
+            this.currentAlpha = this.alpha * Math.sin(Math.PI * t);
+            if (this.life >= this.maxLife) this.reset();
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${this.currentAlpha})`;
+            ctx.fill();
+          }
+        }
+
+        for (let i = 0; i < 60; i++) {
+          const p = new Particle();
+          p.life = Math.floor(Math.random() * p.maxLife);
+          particles.push(p);
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => { p.update(); p.draw(); });
+          requestAnimationFrame(animate);
+        }
+        animate();
+      }
+
+      initParticles('particles');
+      initParticles('footer-particles');
+    })();
+
+
+    /* ── 2. Number Counter ──────────────── */
+    (function () {
+      const el = document.getElementById('counter');
+      const target = parseInt(el.dataset.target, 10);
+      let started = false;
+
+      function formatNum(n) {
+        return Math.floor(n).toLocaleString('ko-KR');
+      }
+
+      function runCounter() {
+        const duration = 1500;
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3.5);
+          el.textContent = formatNum(target * ease);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = formatNum(target);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting && !started) {
+          started = true;
+          runCounter();
+        }
+      }, { threshold: 0.5 });
+      obs.observe(el);
+    })();
+
+
+    /* ── 3. AOS (scroll reveal) ─────────── */
+    (function () {
+      const targets = document.querySelectorAll('[data-aos]');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('aos-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      targets.forEach(el => obs.observe(el));
+    })();
+
+
+    /* ── 4. Card Carousel (겹침 + 슬라이딩) ── */
+    (function () {
+      const cards = document.querySelectorAll('#cardCarousel .card-carousel__item');
+      const total = cards.length;
+      let current = 0;
+      let autoSlide;
+
+      function updatePositions() {
+        cards.forEach((card, i) => {
+          /* 현재 카드 기준으로 상대 위치 계산 (순환) */
+          const pos = (i - current + total) % total;
+          card.setAttribute('data-pos', pos);
+        });
+      }
+
+      function slideNext() {
+        current = (current + 1) % total;
+        updatePositions();
+      }
+
+      function slidePrev() {
+        current = (current - 1 + total) % total;
+        updatePositions();
+      }
+
+      /* 클릭으로 슬라이드 */
+      cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+          const pos = parseInt(card.getAttribute('data-pos'));
+          if (pos === 2) return; /* 이미 중앙 */
+          if (pos < 2) slideNext();
+          else slidePrev();
+          resetAutoSlide();
+        });
+      });
+
+      /* 자동 슬라이딩 (3초 간격) */
+      function startAutoSlide() {
+        autoSlide = setInterval(slideNext, 2000);
+      }
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+      }
+
+      /* 초기화 */
+      updatePositions();
+      startAutoSlide();
+    })();
+
+
+    /* ── Gift Badge Lottie ──────────────── */
+    (function () {
+      const container = document.getElementById('lottie-gift');
+      if (!container || typeof lottie === 'undefined') return;
+      lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'assets/gift.json'
+      });
+    })();
+
+
+    /* ── 5. QR Lottie Animation ─────────── */
+    (function () {
+      const container = document.getElementById('qr-lottie');
+      if (!container || typeof lottie === 'undefined') return;
+      lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'qr_ani.json'
+      });
+    })();
+
+
+    /* ── 6. Arrow Down Lottie ───────────── */
+    (function () {
+      const container = document.getElementById('arrow-down-lottie');
+      if (!container || typeof lottie === 'undefined') return;
+      lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'arrow_down.json'
+      });
+    })();
+
+
+    /* ── 7. Smooth anchor scroll ────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+    document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
+    document.addEventListener('gestureend', function(e) { e.preventDefault(); });
+    document.addEventListener('touchmove', function(e) {
+      if (e.touches.length > 1) e.preventDefault();
+    }, { passive: false });
+  </script>
+
+</body>
+
+</html>

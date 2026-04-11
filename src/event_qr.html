@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>피카플레이 × 매주 50,000 마일리지 당첨 이벤트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="event_qr.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+  HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero__glow-1"></div>
+  <div class="hero__glow-2"></div>
+  <div class="hero__glow-3"></div>
+
+  <div class="hero__content">
+    <div class="hero__badge">
+      <span class="dot"></span>
+      🎉 LIMITED EVENT
+    </div>
+
+    <p class="hero__eyebrow">피카플레이 QR 로그인과 함께하는</p>
+
+    <h1 class="hero__title">
+      매주
+      <span class="hero__num" id="counter" data-target="50000">0</span>
+      마일리지<br>당첨 이벤트
+    </h1>
+
+    <div class="hero__box">
+      <p><strong>QR 로그인 이용 횟수가 많을수록 당첨 확률이 올라갑니다!</strong></p>
+      <p class="note">*스마트폰 기본 카메라 APP으로도 로그인이 가능합니다!</p>
+    </div>
+
+    <a href="#qr-how" class="btn btn--primary">
+      참여 방법 알아보기
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero__scroll">
+    <div class="hero__scroll-mouse"></div>
+    <p>SCROLL</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+  QR 로그인 이용 방법
+══════════════════════════════════════ -->
+<section class="section" id="qr-how">
+  <div class="container">
+    <div class="section__hd" data-aos>
+      <span class="section__label">HOW TO PARTICIPATE</span>
+      <h2 class="section__title">QR 로그인 이용 방법</h2>
+    </div>
+
+    <div class="steps-row">
+      <!-- Step 01 -->
+      <div class="step" data-aos data-delay="1">
+        <div class="step__num">01</div>
+        <div class="step__card">
+          <span class="step__card-icon">📱</span>
+          <span class="step__card-label">피카플레이 APP<br>회원가입 이미지</span>
+        </div>
+        <div class="step__pill">Step 01</div>
+        <p class="step__desc">피카플레이 App<br>회원가입 &amp; 로그인</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-connector" aria-hidden="true">
+        <svg viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 10h24M20 4l8 6-8 6" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="step" data-aos data-delay="2">
+        <div class="step__num">02</div>
+        <div class="step__card">
+          <span class="step__card-icon">🖥️</span>
+          <span class="step__card-label">AI 클라이언트 잠금화면<br>&amp; QR 로그인 이미지</span>
+        </div>
+        <div class="step__pill">Step 02</div>
+        <p class="step__desc">PC방 회원 자리에서<br>QR로 로그인!</p>
+        <p class="step__note">*첫 방문 매장인 경우 PC방 ID와<br>연동이 필요합니다.</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="step-connector" aria-hidden="true">
+        <svg viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 10h24M20 4l8 6-8 6" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="step" data-aos data-delay="3">
+        <div class="step__num">03</div>
+        <div class="step__card">
+          <span class="step__card-icon">🎮</span>
+          <span class="step__card-label">PC방에서 게임 &amp; 먹을거<br>먹으면서 노는 이미지</span>
+        </div>
+        <div class="step__pill">Step 03</div>
+        <p class="step__desc">이벤트 자동 참가 &amp;<br>즐겁게 PC방 이용!</p>
+      </div>
+    </div><!-- /steps-row -->
+
+    <div class="cta-banner" data-aos>
+      🎁 피카플레이 APP에서도 다양한 혜택을 받으시면서 즐겨보세요!
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+  혜택 안내 (DARK)
+══════════════════════════════════════ -->
+<section class="benefits" id="benefits">
+  <div class="benefits__blob-1"></div>
+  <div class="benefits__blob-2"></div>
+
+  <div class="container">
+    <div class="benefits__inner">
+
+      <!-- Left: benefit cards -->
+      <div class="benefits__left">
+        <div class="benefits__hd" data-aos>
+          <span class="section__label">BENEFITS</span>
+          <h2 class="section__title">마일리지, 이렇게 받아요!</h2>
+        </div>
+
+        <div class="b-card" data-aos data-delay="1">
+          <div class="b-card__icon">📅</div>
+          <div>
+            <h3>매일 받아요</h3>
+            <p>출석체크, 행운의 룰렛, 오늘의 운세 보고 마일리지 받기!</p>
+          </div>
+        </div>
+
+        <div class="b-card" data-aos data-delay="2">
+          <div class="b-card__icon">🕹️</div>
+          <div>
+            <h3>재밌게 받아요</h3>
+            <p>달고나 게임, 두더지 잡기, 다른 색 찾기, 오목, 점핑캣 등<br>다양한 게임을 플레이하고 마일리지 받기!</p>
+          </div>
+        </div>
+
+        <div class="b-card" data-aos data-delay="3">
+          <div class="b-card__icon">🎯</div>
+          <div>
+            <h3>다양하게 받아요</h3>
+            <p>게임 미션, 일반 미션 참여하고 마일리지 받기!</p>
+          </div>
+        </div>
+
+        <div class="b-card b-card--gold" data-aos data-delay="4">
+          <div class="b-card__icon">💡</div>
+          <div>
+            <h3>모르면 손해!</h3>
+            <p>다양한 PC게임 이벤트!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: phone mockup -->
+      <div class="phone-wrap" data-aos data-delay="2">
+        <div class="phone-float">
+          <div class="phone-device">
+            <div class="phone-screen">
+              <span class="ps-tag">피카플레이 APP</span>
+              <p class="ps-title">선택한 태그<br>이미지 노출<br><strong style="color:#818CF8">혜택존</strong></p>
+              <div class="ps-items">
+                <div class="ps-item">
+                  <span class="pi">📅</span>
+                  <span class="pt">매일 받아요</span>
+                </div>
+                <div class="ps-item">
+                  <span class="pi">🕹️</span>
+                  <span class="pt">재밌게 받아요</span>
+                </div>
+                <div class="ps-item">
+                  <span class="pi">🎯</span>
+                  <span class="pt">다양하게 받아요</span>
+                </div>
+                <div class="ps-item" style="border:1px solid rgba(245,158,11,0.25)">
+                  <span class="pi">💡</span>
+                  <span class="pt" style="color:#FCD34D">모르면 손해!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-reflection"></div>
+      </div>
+
+    </div><!-- /benefits__inner -->
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+  혜택존 이용방법
+══════════════════════════════════════ -->
+<section class="section section--gray" id="app-how">
+  <div class="container">
+    <div class="section__hd" data-aos>
+      <span class="section__label">APP GUIDE</span>
+      <h2 class="section__title">피카플레이 APP <em>혜택존</em> 이용방법!</h2>
+    </div>
+
+    <div class="steps-row">
+      <!-- Step 01 -->
+      <div class="step" data-aos data-delay="1">
+        <div class="step__num">01</div>
+        <div class="step__card">
+          <span class="step__card-icon">📱</span>
+          <span class="step__card-label">피카플레이 APP<br>회원가입 이미지</span>
+        </div>
+        <div class="step__pill">Step 01</div>
+        <p class="step__desc">피카플레이 App<br>회원가입 &amp; 로그인</p>
+      </div>
+
+      <div class="step-connector">
+        <svg viewBox="0 0 32 20" fill="none">
+          <path d="M2 10h24M20 4l8 6-8 6" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="step" data-aos data-delay="2">
+        <div class="step__num">02</div>
+        <div class="step__card">
+          <span class="step__card-icon">📋</span>
+          <span class="step__card-label">APP 혜택박스<br>선택한 화면</span>
+        </div>
+        <div class="step__pill">Step 02</div>
+        <p class="step__desc">메뉴에서<br>혜택박스 선택!</p>
+      </div>
+
+      <div class="step-connector">
+        <svg viewBox="0 0 32 20" fill="none">
+          <path d="M2 10h24M20 4l8 6-8 6" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="step" data-aos data-delay="3">
+        <div class="step__num">03</div>
+        <div class="step__card">
+          <span class="step__card-icon">🕹️</span>
+          <span class="step__card-label">게임하는 이미지</span>
+        </div>
+        <div class="step__pill">Step 03</div>
+        <p class="step__desc">원하는 이벤트 참여!</p>
+      </div>
+    </div><!-- /steps-row -->
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+  FOOTER
+══════════════════════════════════════ -->
+<footer class="footer">
+  <p class="footer__logo">PICA<span>PLAY</span></p>
+  <div class="footer__divider"></div>
+  <p>© PICAPLAY. All rights reserved.</p>
+  <p>이벤트 관련 문의사항은 고객센터를 이용해 주세요.</p>
+</footer>
+
+
+<!-- ══════════════════════════════════════
+  SCRIPTS
+══════════════════════════════════════ -->
+<script>
+/* ── 1. Particle Canvas ─────────────── */
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x     = Math.random() * canvas.width;
+      this.y     = Math.random() * canvas.height;
+      this.r     = Math.random() * 1.8 + 0.4;
+      this.alpha = Math.random() * 0.5 + 0.1;
+      this.vx    = (Math.random() - 0.5) * 0.3;
+      this.vy    = -(Math.random() * 0.4 + 0.1);
+      this.life  = 0;
+      this.maxLife = Math.random() * 300 + 200;
+      const hue = Math.random() > 0.5 ? 250 : 38;  /* purple or gold */
+      this.color = `hsla(${hue}, 75%, 72%, `;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      const t = this.life / this.maxLife;
+      this.currentAlpha = this.alpha * Math.sin(Math.PI * t);
+      if (this.life >= this.maxLife) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + this.currentAlpha + ')';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) {
+    const p = new Particle();
+    p.life = Math.floor(Math.random() * p.maxLife); /* stagger */
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+
+/* ── 2. Number Counter ──────────────── */
+(function() {
+  const el = document.getElementById('counter');
+  const target = parseInt(el.dataset.target, 10);
+  let started = false;
+
+  function formatNum(n) {
+    return Math.floor(n).toLocaleString('ko-KR');
+  }
+
+  function runCounter() {
+    const duration = 2000;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); /* easeOutCubic */
+      el.textContent = formatNum(target * ease);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = formatNum(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      runCounter();
+    }
+  }, { threshold: 0.5 });
+  obs.observe(el);
+})();
+
+
+/* ── 3. AOS (scroll reveal) ─────────── */
+(function() {
+  const targets = document.querySelectorAll('[data-aos]');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  targets.forEach(el => obs.observe(el));
+})();
+
+
+/* ── 4. Benefit cards: slide from left ─ */
+(function() {
+  const cards = document.querySelectorAll('.b-card');
+  cards.forEach((c, i) => {
+    c.style.opacity = '0';
+    c.style.transform = 'translateX(-36px)';
+    c.style.transition = `opacity 0.55s ${i * 0.1}s ease, transform 0.55s ${i * 0.1}s ease`;
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const c = entry.target;
+        c.style.opacity = '1';
+        c.style.transform = 'translateX(0)';
+        obs.unobserve(c);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(c => obs.observe(c));
+})();
+
+
+/* ── 5. Smooth anchor scroll ────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
