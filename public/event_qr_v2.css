@@ -478,6 +478,7 @@ a {
 /* Info banner */
 .info-banner {
   display: flex;
+  align-self: center;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -487,7 +488,7 @@ a {
   color: var(--content-white);
   font-size: 0.9rem;
   letter-spacing: -0.05em;
-  max-width: 600px;
+  width: fit-content;
   margin: 0 auto;
 }
 
@@ -1029,7 +1030,11 @@ a {
   }
 
   :root {
-    --py: 64px;
+    --py: 50px;
+  }
+
+  .section__label {
+    margin-bottom: 4px;
   }
 
   .hero {
@@ -1085,9 +1090,14 @@ a {
     height: 100%;
   }
 
+  .step-circle { 
+    gap: 10px;
+  }
+
   .steps-row {
     flex-direction: column;
-    gap: 24px;
+    margin-bottom: 20px;
+    gap: 20px;
   }
 
   .step-arrow {
@@ -1128,6 +1138,16 @@ a {
     text-align: center;
   }
 
+  .info-banner {
+    font-size: 16px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section__hd {
+    margin-bottom: 20px;
+  }
+
   .tag-group--grid {
     grid-template-columns: 1fr;
   }
@@ -1145,6 +1165,11 @@ a {
   .card-carousel__item {
     width: 150px;
     height: 220px;
+  }
+
+  .coins-center {
+    padding: 0px;
+    margin-top: 0px;
   }
 
   .benefit-row__title {
