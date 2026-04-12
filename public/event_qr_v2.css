@@ -307,8 +307,6 @@ a {
   margin: 0 70px 70px 70px;
   max-width: 830px;
   animation: fadeUp 0.9s 0.45s ease both;
-  background-color: #ef5d09;
-
 }
 
 .glass-card__qr {
@@ -348,12 +346,21 @@ a {
   opacity: 0.85;
 }
 
+.mobile-br {
+  display: none;
+}
+
 /* 아래 화살표 */
 .hero__arrow {
   display: flex;
   justify-content: center;
   animation: bounceY 2.2s 2s infinite, fadeUp 0.9s 0.6s ease both;
   opacity: 0.6;
+}
+
+.arrow-down-lottie {
+  width: 150px;
+  height: 150px;
 }
 
 @keyframes bounceY {
@@ -654,6 +661,7 @@ a {
   height: 400px;
   margin: 0 auto;
   perspective: 1000px;
+  overflow: hidden;
 }
 
 .card-carousel__track {
@@ -1025,7 +1033,7 @@ a {
   }
 
   .hero {
-    padding: 32px 20px 50px;
+    padding: 32px 20px 36px 20px;
   }
 
   .hero__badge {
@@ -1048,8 +1056,14 @@ a {
     font-size: 54px;
   }
 
+  .arrow-down-lottie {
+    width: 90px;
+    height: 90px;
+  }
+
   .key-visual-container {
     gap: 50px;
+    margin-bottom: 8px;
   }
 
   .key-visual {
@@ -1106,11 +1120,21 @@ a {
 
   .glass-card__title {
     font-size: 20px;
-    
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .glass-card__desc {
+    text-align: center;
   }
 
   .tag-group--grid {
     grid-template-columns: 1fr;
+  }
+
+  .mobile-br {
+    display: inline;
+    text-align: center;
   }
 
   .card-carousel {
