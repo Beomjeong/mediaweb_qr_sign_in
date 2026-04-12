@@ -563,7 +563,7 @@ a {
   height: 52px;
   padding: 0 40px;
   border-radius: var(--r-lg);
-  font-size: 1.1rem;
+  font-size: 1.375rem;
   letter-spacing: -0.05em;
   white-space: nowrap;
 }
