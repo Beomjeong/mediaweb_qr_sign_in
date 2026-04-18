@@ -375,40 +375,6 @@
 ══════════════════════════════════════ -->
   <script>
 
-    /* ── 2. Number Counter ──────────────── */
-    (function () {
-      const el = document.getElementById('counter');
-      if (!el) return;
-      const target = parseInt(el.dataset.target, 10);
-      let started = false;
-
-      function formatNum(n) {
-        return Math.floor(n).toLocaleString('ko-KR');
-      }
-
-      function runCounter() {
-        const duration = 1500;
-        const start = performance.now();
-        function step(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3.5);
-          el.textContent = formatNum(target * ease);
-          if (progress < 1) requestAnimationFrame(step);
-          else el.textContent = formatNum(target);
-        }
-        requestAnimationFrame(step);
-      }
-
-      const obs = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && !started) {
-          started = true;
-          runCounter();
-        }
-      }, { threshold: 0.5 });
-      obs.observe(el);
-    })();
-
-
     /* ── 3. AOS (scroll reveal) ─────────── */
     (function () {
       const targets = document.querySelectorAll('[data-aos]');
@@ -488,35 +454,7 @@
     })();
 
 
-    /* ── Gift Badge Lottie ──────────────── */
-    (function () {
-      const container = document.getElementById('lottie-gift');
-      if (!container || typeof lottie === 'undefined') return;
-      lottie.loadAnimation({
-        container: container,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'assets/gift.json'
-      });
-    })();
-
-
-    /* ── 5. QR Lottie Animation ─────────── */
-    (function () {
-      const container = document.getElementById('qr-lottie');
-      if (!container || typeof lottie === 'undefined') return;
-      lottie.loadAnimation({
-        container: container,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'qr_ani.json'
-      });
-    })();
-
-
-    /* ── 6. Arrow Down Lottie ───────────── */
+    /* ── 5. Arrow Down Lottie ───────────── */
     (function () {
       const container = document.getElementById('arrow-down-lottie');
       if (!container || typeof lottie === 'undefined') return;
