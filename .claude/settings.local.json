@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const d = require\\('/tmp/figma_node.json'\\); console.log\\(JSON.stringify\\(d, null, 2\\)\\);\")"
+    ]
+  }
+}
