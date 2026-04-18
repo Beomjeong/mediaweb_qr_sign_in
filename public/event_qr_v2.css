@@ -112,16 +112,6 @@ a {
   min-height: 100vh;
 }
 
-
-#particles,
-#footer-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  display: none;
-}
-
 /* 배경 플로팅 장식 */
 .hero__float {
   position: absolute;
@@ -219,28 +209,6 @@ a {
   /* 중요! 이걸 써야 안쪽 내용물도 같이 둥글게 잘립니다 */
 }
 
-/* ── 뱃지 ── */
-.hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50px;
-  color: #fff;
-  font-size: clamp(8px, 2.5vw, 14px);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  margin-bottom: 8px;
-  white-space: nowrap;
-}
-
-.hero__badge-star {
-  width: clamp(12px, 3vw, 18px);
-  height: auto;
-  flex-shrink: 0;
-}
-
 /* ── 피카플레이 풍선 로고 ── */
 .hero__balloon {
   display: flex;
@@ -273,11 +241,6 @@ a {
   margin-bottom: 9px;
 }
 
-.hero__gold {
-  color: var(--pica-yellow);
-  font-weight: 900;
-}
-
 /* ── QR 스캔 영역 ── */
 .hero__scan {
   position: relative;
@@ -289,22 +252,6 @@ a {
   margin-bottom: 9px;
 }
 
-.hero__scan-text {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: #fff;
-  letter-spacing: -0.05em;
-  line-height: 1.2;
-}
-
-.hero__scan-amount {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 4px;
-  font-size: clamp(15px, 5.5vw, 30px);
-}
 
 /* .hero__scan-weekly { color: #fff; }
 .hero__scan-suffix { font-size: clamp(15px, 5.5vw, 30px); } */
@@ -365,13 +312,6 @@ a {
 @keyframes scanMove {
   0%, 100% { top: 4%; }
   50%       { top: 87%; }
-}
-
-/* ── 서브 텍스트 ── */
-.hero__sub {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(10px, 3.2vw, 18px);
-  letter-spacing: -0.05em;
 }
 
 .hero__sub-img {
