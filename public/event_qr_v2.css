@@ -695,7 +695,6 @@ a {
   align-items: center;
   margin: 0 40px;
   padding-top: 40px;
-  animation: arrowPush 1.6s ease-in-out infinite;
 }
 
 /* Info banner */
@@ -1153,7 +1152,6 @@ a {
   }
 
   .step-arrow {
-    animation: arrowPushDown 1.6s ease-in-out infinite;
     margin: 0;
     padding-top: 0;
     width: 8px;
