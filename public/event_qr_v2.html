@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -11,106 +12,97 @@
   <link rel="stylesheet" href="event_qr_v2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
+
 <body>
 
   <!-- ══════════════════════════════════════
   SECTION 1 — HERO (DARK)
 ══════════════════════════════════════ -->
   <section class="hero">
-    <canvas id="particles"></canvas>
 
     <!-- 배경 플로팅 장식 -->
-    <img src="assets/img_hero_float_left.png"  alt="" class="hero__float hero__float--left" aria-hidden="true">
+    <img src="assets/img_hero_float_left.png" alt="" class="hero__float hero__float--left" aria-hidden="true">
     <img src="assets/img_hero_float_right.png" alt="" class="hero__float hero__float--right" aria-hidden="true">
 
     <div class="hero__content">
 
-<!-- 스마트폰 영역 -->
-<div class="hero__phone-wrap">
+      <!-- 스마트폰 영역 -->
+      <div class="hero__phone-wrap">
 
-  <img src="assets/img_hero_phone.png" alt="" class="hero__phone-img" aria-hidden="true">
+        <img src="assets/img_hero_phone.png" alt="" class="hero__phone-img" aria-hidden="true">
 
-  <div class="hero__screen">
-    
-    <!-- <div class="hero__badge">
-      <img src="assets/icon_hero_star2.png" alt="" class="hero__badge-star">
-      피카플레이 QR 로그인 이벤트
-      <img src="assets/icon_hero_star1.png" alt="" class="hero__badge-star">
-    </div> -->
+        <div class="hero__screen">
 
-    <div class="hero__balloon">
-      <img src="assets/img_hero_balloon.png" alt="PICA PLAY">
+
+          <!--스마트폰 안 내용-->
+          <div class="hero__balloon">
+            <img src="assets/img_hero_balloon.png" alt="PICA PLAY BI">
+          </div>
+
+          <div class="hero__title">
+            <img src="assets/head_titletxt.png" alt="QR로 1초<br>PC방 로그인 끝!">
+          </div>
+
+          <div class="hero__title">
+            <img src="assets/titletxt_picaplay_qr_login_event.png" alt="피카플레이 QR 로그인 이벤트">
+          </div>
+
+          <div class="hero__scan">
+            <div class="hero__title">
+              <img src="assets/qr_scanning_area.png" alt="매주 50,000 마일리지 지급!">
+            </div>
+            <div class="hero__scan-line"></div>
+          </div>
+          <div class="hero__sub-img">
+            <img src="assets/titletxt_lucky_7person.png" alt="매주 행운의 7인에 도전하세요!">
+          </div>
+        </div>
+        <div class="glass-card">
+          <div class="glass-card__qr">
+            <img src="assets/img_hero_qr_code.png" alt="QR 코드">
+          </div>
+          <div class="glass-card__text">
+            <p class="glass-card__title">
+              <strong>QR 로그인 이용 횟수</strong>가 많을수록<br>
+              <strong>당첨 확률</strong>이 올라가요!
+            </p>
+            <p class="glass-card__desc">스마트폰 기본 카메라로도<br class="mobile-br">로그인이 가능해요.</p>
+          </div>
+        </div>
+        <div class="hero__arrow">
+          <div id="arrow-down-lottie" class="arrow-down-lottie"></div>
+        </div>
+      </div>
+
     </div>
-
-    <h1 class="hero__title">
-      QR로 1초<br>PC방 로그인 끝!
-    </h1>
-
-    <div class="hero__scan">
-      <div class="hero__scan-text">
-        <div class="hero__scan-amount">
-          <span class="hero__scan-weekly">매주</span>
-          <span class="hero__gold">50,000</span>
-        </div>
-        <div class="hero__scan-suffix">마일리지 지급!</div>
-      </div>
-      <span class="hero__scan-corner tl"></span>
-      <span class="hero__scan-corner tr"></span>
-      <span class="hero__scan-corner bl"></span>
-      <span class="hero__scan-corner br"></span>
-      <div class="hero__scan-line"></div>
-    </div>
-
-    <p class="hero__sub">매주 행운의 7인에 도전하세요!</p>
-  </div>
-</div>
-
-      <!-- QR 당첨확률 카드 -->
-      <div class="glass-card">
-        <div class="glass-card__qr">
-          <img src="assets/img_hero_qr_code.png" alt="QR 코드">
-        </div>
-        <div class="glass-card__text">
-          <p class="glass-card__title">
-            <strong>QR 로그인 이용 횟수</strong>가 많을수록<br>
-            <strong>당첨 확률</strong>이 올라가요!
-          </p>
-          <p class="glass-card__desc">스마트폰 기본 카메라로도<br class="mobile-br"> 로그인이 가능해요.</p>
-        </div>
-      </div>
-
-      <!-- 아래 화살표 -->
-      <div class="hero__arrow">
-        <div id="arrow-down-lottie" class="arrow-down-lottie"></div>
-      </div>
-
-      <!-- 이벤트 참여 방법 서브섹션 -->
-      <div class="hero__how">
-        <div class="hero__how-inner">
-          <h2 class="hero__how-title">이벤트 참여 방법</h2>
-          <div class="hero__how-steps">
-            <div class="hero__how-step">
-              <div class="hero__how-step-img"><img src="assets/img_key_1st.png" alt="QR 로그인 시 자동 응모"></div>
-              <p class="hero__how-step-label">QR 로그인 시 자동 응모</p>
-            </div>
-            <div class="hero__how-arrow">
-              <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
-                <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="hero__how-step">
-              <div class="hero__how-step-img"><img src="assets/img_key_2nd.png" alt="매주 7인 추첨"></div>
-              <p class="hero__how-step-label">매주 7인 추첨</p>
-            </div>
-            <div class="hero__how-arrow">
-              <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
-                <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="hero__how-step">
-              <div class="hero__how-step-img"><img src="assets/img_key_3rd.png" alt="5만 마일리지 지급"></div>
-              <p class="hero__how-step-label">5만 마일리지 지급</p>
-            </div>
+    <!-- 이벤트 참여 방법 서브섹션 -->
+    <div class="hero__how">
+      <div class="hero__how-inner">
+        <h2 class="hero__how-title">이벤트 참여 방법</h2>
+        <div class="hero__how-steps">
+          <div class="hero__how-step">
+            <div class="hero__how-step-img"><img src="assets/img_key_1st.png" alt="QR 로그인 시 자동 응모"></div>
+            <p class="hero__how-step-label">QR 로그인 시 자동 응모</p>
+          </div>
+          <div class="hero__how-arrow">
+            <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+              <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="hero__how-step">
+            <div class="hero__how-step-img"><img src="assets/img_key_2nd.png" alt="매주 7인 추첨"></div>
+            <p class="hero__how-step-label">매주 7인 추첨</p>
+          </div>
+          <div class="hero__how-arrow">
+            <svg width="16" height="30" viewBox="-2 -2 20 34" fill="none">
+              <path d="M0 0 L16 15 L0 30" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="hero__how-step">
+            <div class="hero__how-step-img"><img src="assets/img_key_3rd.png" alt="5만 마일리지 지급"></div>
+            <p class="hero__how-step-label">5만 마일리지 지급</p>
           </div>
         </div>
       </div>
@@ -169,9 +161,8 @@
       </div>
 
       <div class="info-banner" data-aos>
-        <img src="assets/icon-info.svg" alt="info"
-          class="info-banner__icon">
-        <span>첫 방문 매장인 경우<br class="mobile-br"> PC방 ID와 연동이 필요합니다.</span>
+        <img src="assets/icon-info.svg" alt="info" class="info-banner__icon">
+        <span>첫 방문 매장인 경우<br class="mobile-br">PC방 ID와 연동이 필요합니다.</span>
       </div>
     </div>
   </section>
@@ -190,7 +181,7 @@
         </div>
         <div class="coins-center">
           <!-- <span class="section__label">게임, 미션, 이벤트 등 다양하게!</span> -->
-          <h2 class="section__title">피카플레이 APP빵빵하게 받는<br>마일리지 혜택 몰아봐요!</h2>
+          <h2 class="section__title">피카플레이 APP<br>마일리지 혜택 몰아봐요!</h2>
           <!--<br class="mobile-br">  모바일에서 줄바꿈 시 이용하숑 -->
         </div>
         <div class="coins-right">
@@ -209,15 +200,15 @@
             <p class="benefit-row__desc">하루 한 번 소소하게 챙기는 마일리지!</p>
           </div>
           <div class="tag-group">
-            <span class="tag tag--filled" style="gap:12px;">
+            <span class="tag tag--filled">
               <img src="assets/icon_daily_attendance.png" alt="" class="tag_icon_daily">
               출석체크
             </span>
-            <span class="tag tag--filled" style="gap:12px;">
+            <span class="tag tag--filled">
               <img src="assets/icon_daily_roulette.png" alt="" class="tag_icon_daily">
               행운의 룰렛
             </span>
-            <span class="tag tag--filled" style="gap:12px;">
+            <span class="tag tag--filled">
               <img src="assets/icon_daily_fortune.png" alt="" class="tag_icon_daily">
               오늘의 운세
             </span>
@@ -275,11 +266,11 @@
             <p class="benefit-row__desc">미션 참여하고 받는 푸짐한 마일리지!</p>
           </div>
           <div class="tag-group tag-group--row">
-            <span class="tag tag--yellow" style="gap: 5px;">
+            <span class="tag tag--yellow">
               <img src="assets/icon_mission_normal.png" alt="" class="tag_mission">
               일반 미션
             </span>
-            <span class="tag tag--dark" style="gap: 5px;">
+            <span class="tag tag--dark">
               <img src="assets/icon_mission_game.png" alt="" class="tag_mission">
               게임 미션
             </span>
@@ -372,7 +363,6 @@
   FOOTER
 ══════════════════════════════════════ -->
   <footer class="footer">
-    <canvas id="footer-particles"></canvas>
     <div class="footer__content">
       <p>&copy; PICAPLAY. All rights reserved.</p>
       <p>이벤트 관련 문의사항은 고객센터를 이용해 주세요.</p>
@@ -384,120 +374,11 @@
   SCRIPTS
 ══════════════════════════════════════ -->
   <script>
-    /* ── 1. Particle Canvas (입자 + 유성 추가 버전) ─────────────── */
-(function () {
-  function initParticles(canvasId) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let meteors = []; // 유성을 담을 바구니 추가
-
-    function resize() {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // 1. 기존의 작은 입자 클래스
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.r = Math.random() * 2.5 + 0.5;
-        this.alpha = Math.random() * 0.8 + 0.1;
-        this.vx = (Math.random() - 0.5) * 0.2;
-        this.vy = -(Math.random() * 0.3 + 0.05);
-        this.life = 0;
-        this.maxLife = Math.random() * 400 + 200;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life++;
-        const t = this.life / this.maxLife;
-        this.currentAlpha = this.alpha * Math.sin(Math.PI * t);
-        if (this.life >= this.maxLife) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.currentAlpha})`;
-        ctx.fill();
-      }
-    }
-
-    // 2. 새로 추가된 유성 클래스
-    class Meteor {
-      constructor() { this.reset(); }
-      reset() {
-        // 오른쪽 위 영역 어딘가에서 시작
-        this.x = Math.random() * canvas.width * 1.5; 
-        this.y = Math.random() * -canvas.height; 
-        this.len = Math.random() * 100 + 80; // 유성 꼬리 길이
-        this.speed = Math.random() * 8 + 4;   // 유성 속도
-        this.alpha = Math.random() * 0.7 + 0.5; // 유성 밝기
-      }
-      update() {
-        this.x -= this.speed; // 대각선 왼쪽 아래로 이동
-        this.y += this.speed;
-        // 화면 밖으로 완전히 나가면 다시 초기화
-        if (this.y > canvas.height + 100 || this.x < -100) {
-          this.reset();
-        }
-      }
-      draw() {
-        // 유성 머리부터 꼬리까지 그라데이션
-        const grad = ctx.createLinearGradient(this.x, this.y, this.x + this.len, this.y - this.len);
-        grad.addColorStop(0, `rgba(255, 255, 255, ${this.alpha})`);
-        grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + this.len, this.y - this.len);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-      }
-    }
-
-    // 작은 입자 60개 만들기
-    for (let i = 0; i < 60; i++) {
-      const p = new Particle();
-      p.life = Math.floor(Math.random() * p.maxLife);
-      particles.push(p);
-    }
-
-    // 유성 개수조절
-    for (let i = 0; i < 7; i++) {
-      meteors.push(new Meteor(true));
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // 입자 그리고 업데이트
-      particles.forEach(p => { p.update(); p.draw(); });
-      
-      // 유성 그리고 업데이트
-      meteors.forEach(m => { m.update(); m.draw(); });
-      
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-
-  initParticles('particles');
-  initParticles('footer-particles');
-})();
-
 
     /* ── 2. Number Counter ──────────────── */
     (function () {
       const el = document.getElementById('counter');
+      if (!el) return;
       const target = parseInt(el.dataset.target, 10);
       let started = false;
 
@@ -549,7 +430,6 @@
       const total = cards.length;
       let current = 0;
       let autoSlide;
-
       function updatePositions() {
         cards.forEach((card, i) => {
           /* 현재 카드 기준으로 상대 위치 계산 (순환) */
@@ -577,6 +457,21 @@
           else slidePrev();
           resetAutoSlide();
         });
+
+        const handleDragEnd = (e) => {
+          endX = e.type.includes('touch') ? e.changedTouches[0].clientX : e.clientX;
+          const diff = startX - endX;
+          const threshold = 50; // 최소 50px 이상은 움직여야 스와이프로 인정
+
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              slideNext(); // 왼쪽으로 쓸면 다음 (startX가 더 크면)
+            } else {
+              slidePrev(); // 오른쪽으로 쓸면 이전
+            }
+            resetAutoSlide();
+          }
+        };
       });
 
       /* 자동 슬라이딩 (몇초 간격으로 할 건지) */
@@ -587,7 +482,6 @@
         clearInterval(autoSlide);
         startAutoSlide();
       }
-
       /* 초기화 */
       updatePositions();
       startAutoSlide();
@@ -647,10 +541,10 @@
   </script>
 
   <script>
-    document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
-    document.addEventListener('gesturechange', function(e) { e.preventDefault(); });
-    document.addEventListener('gestureend', function(e) { e.preventDefault(); });
-    document.addEventListener('touchmove', function(e) {
+    document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
+    document.addEventListener('gesturechange', function (e) { e.preventDefault(); });
+    document.addEventListener('gestureend', function (e) { e.preventDefault(); });
+    document.addEventListener('touchmove', function (e) {
       if (e.touches.length > 1) e.preventDefault();
     }, { passive: false });
   </script>

@@ -47,6 +47,59 @@
     </a>
   </div>
 
+  <!-- key visual container — hero 배경(파티클·글로우) 위에 올라야 glassmorphism이 보임 -->
+  <div class="glass-card hero-key__card">
+
+    <!-- 3단계 키 비주얼 -->
+    <div class="hero-key__visuals">
+
+      <div class="hero-key__item">
+        <div class="hero-key__img">
+          <img src="https://www.figma.com/api/mcp/asset/df3ecb61-b7a3-4ff5-b1c2-df15c7683793" alt="QR 로그인">
+        </div>
+        <p class="hero-key__label">QR 로그인 시 자동 응모</p>
+      </div>
+
+      <div class="hero-key__arrow">
+        <img src="https://www.figma.com/api/mcp/asset/e1c3fb0c-9d30-4464-bb89-efe16970f7b6" alt="">
+      </div>
+
+      <div class="hero-key__item">
+        <div class="hero-key__img">
+          <img src="https://www.figma.com/api/mcp/asset/80ddd832-781a-42da-ad36-82e2630964ba" alt="추첨">
+        </div>
+        <p class="hero-key__label">매주 7인 추첨</p>
+      </div>
+
+      <div class="hero-key__arrow">
+        <img src="https://www.figma.com/api/mcp/asset/e1c3fb0c-9d30-4464-bb89-efe16970f7b6" alt="">
+      </div>
+
+      <div class="hero-key__item">
+        <div class="hero-key__img">
+          <img src="https://www.figma.com/api/mcp/asset/0e7c44da-34c5-4d42-ae08-06ed8a0c4532" alt="마일리지">
+        </div>
+        <p class="hero-key__label">5만 마일리지 지급</p>
+      </div>
+
+    </div><!-- /hero-key__visuals -->
+
+    <!-- QR 당첨 확률 안내 -->
+    <div class="hero-key__info">
+      <div class="hero-key__qr-icon">
+        <img src="https://www.figma.com/api/mcp/asset/8ea7a1ba-57f3-4daf-8592-5961d4d76970" alt="QR 스캔">
+      </div>
+      <div class="hero-key__info-text">
+        <p class="hero-key__info-title">
+          <strong>QR 로그인 이용 횟수</strong>가 많을수록<br>
+          <strong>당첨 확률</strong>이 올라가요!
+        </p>
+        <p class="hero-key__info-desc">스마트폰 기본 카메라로도 로그인이 가능해요.</p>
+      </div>
+    </div><!-- /hero-key__info -->
+
+  </div>
+
   <div class="hero__scroll">
     <div class="hero__scroll-mouse"></div>
     <p>SCROLL</p>
@@ -92,7 +145,10 @@
         </div>
         <div class="step__pill">Step 02</div>
         <p class="step__desc">PC방 회원 자리에서<br>QR로 로그인!</p>
-        <p class="step__note">*첫 방문 매장인 경우 PC방 ID와<br>연동이 필요합니다.</p>
+        <div class="info-banner">
+          <img src="assets/icon-info.svg" alt="">
+          첫 방문 매장인 경우 PC방 ID와 연동이 필요합니다.
+        </div>
       </div>
 
       <!-- Arrow -->

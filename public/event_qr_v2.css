@@ -98,16 +98,20 @@ a {
 ════════════════════════════════════════ */
 .hero {
   position: relative;
-  background-image: url('assets/img_hero_bg.png');
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-color: #0a0e27;
+  background:
+    radial-gradient(circle at 90% 90%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 10% 50%, rgba(29, 39, 105, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #06091c 0%, #0a0e27 100%);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  /* 자식인 .hero__content를 가로 중앙으로 보냄 */
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
+
 
 #particles,
 #footer-particles {
@@ -124,82 +128,95 @@ a {
   pointer-events: none;
   z-index: 2;
 }
+
 .hero__float--left {
   left: 0;
   top: 0;
-  width: 33%;
-  max-width: 400px;
+  width: 30%;
+  /* max-width: 400px; */
 }
+
 .hero__float--right {
   right: 0;
   top: 20%;
-  width: 33%;
-  max-width: 400px;
+  width: 30%;
+  /* max-width: 400px; */
 }
 
 /* 히어로 콘텐츠 래퍼 */
 .hero__content {
   position: relative;
   z-index: 5;
-  width: 100%;
-  max-width: 960px;
-  padding: 52px 28px 0;
+
+  /* ─── 수정된 핵심 부분 ─── */
+  width: auto;
+  max-width: 1100px;
+  min-width: 340;
+  margin: 0 auto;
+  /* 박스 자체를 중앙에 위치시킴 */
+  left: 0;
+  /* 50%를 지우고 0으로 초기화 */
+  transform: none;
+  /* translateX를 지움 */
+  /* ────────────────────── */
+
+  /* padding: 0px 28px 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* ── 스마트폰 전체 컨테이너 ── */
+/* ── 스마트폰 전체 컨테이너 (배경 장식 — float 위, 콘텐츠 아래) ── */
 .hero__phone-wrap {
   position: relative;
-  width: 100%;
-  /* 프레임의 원래 크기인 1100px로 키워주세요 */
-  max-width: 1100px; 
-  margin: 0 auto;
-  /* 둥근 모서리는 프레임 이미지 자체가 가지고 있다면 여기서 삭제해도 됩니다 */
-  border-radius: 0; 
-  background: none; /* 배경색은 아래 스크린 오버레이로 옮길게요 */
-  overflow: visible; /* 프레임이 잘리지 않게 */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(300px, 60vw, 720px);
+  z-index: 3;
+  pointer-events: none;
+  background: none;
+  overflow: visible;
 }
 
-/* ── 휴대폰 프레임 이미지 (가장 위) ── */
+/* ── 휴대폰 프레임 이미지 ── */
 .hero__phone-img {
   display: block;
   width: 100%;
   position: relative;
-  z-index: 10; /* 가장 위로 올려서 디스플레이를 덮어줍니다 */
-  pointer-events: none; /* 프레임 아래의 글자나 버튼이 클릭되게 함 */
+  z-index: 10;
+  pointer-events: none;
 }
 
 /* ── 스크린 오버레이 (디스플레이 배경) ── */
 .hero__screen {
   position: absolute;
   /* inset: 0 대신 프레임 안쪽 검은 화면에 맞춰 살짝 여백을 줍니다 */
-  top: 4%; 
+  top: 3%;
   left: 1%;
   right: 1%;
   bottom: 1%;
-  
-  z-index: 1; /* 프레임(10)보다 아래에 위치 */
+
+  z-index: 1;
+  /* 프레임(10)보다 아래에 위치 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 7.5% 8% 24%;
-  
+
   /* 아까 wrap에 있던 배경 스타일을 여기로 가져옵니다 */
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.2) 0%, 
-    rgba(0, 0, 0, 0.05) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(15, 23, 42, 0.2) 0%,
+      rgba(0, 0, 0, 0.05) 100%);
   backdrop-filter: blur(15px) saturate(120%);
   -webkit-backdrop-filter: blur(15px) saturate(120%);
-  
+
   /* 프레임 안쪽 화면의 둥근 모서리 */
-  border-radius: clamp(100px, 15vw, 212px); 
-  overflow: hidden; /* 중요! 이걸 써야 안쪽 내용물도 같이 둥글게 잘립니다 */
+  border-radius: clamp(0px, 12vw, 212px);
+  overflow: hidden;
+  /* 중요! 이걸 써야 안쪽 내용물도 같이 둥글게 잘립니다 */
 }
 
 /* ── 뱃지 ── */
@@ -208,7 +225,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 5px 14px;
-  border: 1px solid rgba(255,255,255,0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 50px;
   color: #fff;
   font-size: clamp(8px, 2.5vw, 14px);
@@ -217,6 +234,7 @@ a {
   margin-bottom: 8px;
   white-space: nowrap;
 }
+
 .hero__badge-star {
   width: clamp(12px, 3vw, 18px);
   height: auto;
@@ -225,17 +243,24 @@ a {
 
 /* ── 피카플레이 풍선 로고 ── */
 .hero__balloon {
-  display: flex;         /* 부모를 flex로 만듭니다 */
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center;     /* 세로 중앙 정렬 */
-  width: 100%;           /* 부모 박스 너비를 꽉 채워 기준을 잡습니다 */
+  display: flex;
+  /* 부모를 flex로 만듭니다 */
+  justify-content: center;
+  /* 가로 중앙 정렬 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  width: 100%;
+  /* 부모 박스 너비를 꽉 채워 기준을 잡습니다 */
   margin-bottom: 5px;
 }
-.hero__balloon img { 
+
+.hero__balloon img {
   height: clamp(40px, 10vw, 80px);
-  width: auto;           /* 비율 유지 */
+  width: auto;
+  /* 비율 유지 */
   /* margin: 0 auto; 는 삭제해도 됩니다 (flex가 대신 정렬해주니까요) */
-  display: block;        /* 이미지를 블록화해서 불필요한 공백 제거 */
+  display: block;
+  /* 이미지를 블록화해서 불필요한 공백 제거 */
 }
 
 /* ── 메인 타이틀 ── */
@@ -247,6 +272,7 @@ a {
   letter-spacing: -0.05em;
   margin-bottom: 9px;
 }
+
 .hero__gold {
   color: var(--pica-yellow);
   font-weight: 900;
@@ -262,6 +288,7 @@ a {
   justify-content: center;
   margin-bottom: 9px;
 }
+
 .hero__scan-text {
   position: relative;
   z-index: 1;
@@ -270,6 +297,7 @@ a {
   letter-spacing: -0.05em;
   line-height: 1.2;
 }
+
 .hero__scan-amount {
   display: flex;
   align-items: baseline;
@@ -277,11 +305,12 @@ a {
   gap: 4px;
   font-size: clamp(15px, 5.5vw, 30px);
 }
-.hero__scan-weekly { color: #fff; }
-.hero__scan-suffix { font-size: clamp(15px, 5.5vw, 30px); }
+
+/* .hero__scan-weekly { color: #fff; }
+.hero__scan-suffix { font-size: clamp(15px, 5.5vw, 30px); } */
 
 /* 스캔 코너 마크 */
-.hero__scan-corner {
+/* .hero__scan-corner {
   position: absolute;
   width: clamp(16px, 4.5vw, 26px);
   height: clamp(16px, 4.5vw, 26px);
@@ -291,81 +320,154 @@ a {
 .hero__scan-corner.tl { top:0;    left:0;   border-width: 2px 0 0 2px; }
 .hero__scan-corner.tr { top:0;    right:0;  border-width: 2px 2px 0 0; }
 .hero__scan-corner.bl { bottom:0; left:0;   border-width: 0 0 2px 2px; }
-.hero__scan-corner.br { bottom:0; right:0;  border-width: 0 2px 2px 0; }
+.hero__scan-corner.br { bottom:0; right:0;  border-width: 0 2px 2px 0; } */
 
 /* 스캔 라인 */
 .hero__scan-line {
   position: absolute;
-  width: 88%;
+  width: 110%;
   height: 2px;
-  left: 6%;
-  top: 50%;
-  background: linear-gradient(to right, transparent 0%, #FBCD00 30%, #FBCD00 70%, transparent 100%);
-  box-shadow: 0 0 8px rgba(251,205,0,0.65);
+  left: -5%;
+  top: 4%;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 59, 48, 0.4) 8%,
+    #FF3B30 24%,
+    #ffb3af 50%,
+    #FF3B30 76%,
+    rgba(255, 59, 48, 0.4) 92%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 8px 2px rgba(255, 59, 48, 0.55),
+    0 0 22px rgba(255, 59, 48, 0.28);
+  animation: scanMove 2.8s ease-in-out infinite;
+}
+
+/* 스캔 라인 아래 광택 스윕 */
+.hero__scan-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(20px, 5vw, 38px);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 59, 48, 0.18) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes scanMove {
+  0%, 100% { top: 4%; }
+  50%       { top: 87%; }
 }
 
 /* ── 서브 텍스트 ── */
 .hero__sub {
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
   font-size: clamp(10px, 3.2vw, 18px);
   letter-spacing: -0.05em;
+}
+
+.hero__sub-img {
+  display: block;
+  /* 이미지 주변의 불필요한 공백 제거 */
+  width: 85%;
+  max-width: 743px;
+  /* 부모 박스 너비를 넘지 않게 */
+  height: auto;
+  /* 비율 유지 */
+  margin: 0 auto;
+  /* 가로 중앙 정렬 */
+
+  /* 기존 <p> 태그에 있던 여백(margin)이나 패딩(padding)이 필요하다면 여기에 추가해 주세요 */
+  margin-top: clamp(30px, 5.5vw, 60px);
+  /* 예시: 위쪽 여백 */
 }
 
 /* ── QR 당첨확률 카드 ── */
 .glass-card {
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding: 24px 28px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
+  gap: 60px;
+  padding: 40px 60px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow:
-    inset 1px 1px 1px rgba(255,255,255,0.15),
-    inset -1px -1px 1px rgba(0,0,0,0.1),
-    0 16px 32px rgba(0,0,0,0.25);
+    inset 1px 1px 1px rgba(255, 255, 255, 0.15),
+    inset -1px -1px 1px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.25);
   border-radius: var(--r-lg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  width: 100%;
-  max-width: 600px;
-  margin: 28px auto 0;
+  width: 90%;
+  max-width: 740px;
+  /* 간격 = sub-img(titletxt_lucky_7person) 렌더 높이 */
+  margin: clamp(-220px, -32vw, -180px) auto 0;
+  position: relative;
+  z-index: 10;
+  /* 폰(z-index:3)보다 위 */
 }
+
 .glass-card__qr {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: clamp(80px, 6vw, 150px);
+  height: clamp(80px, 6vw, 150px);
   border-radius: var(--r);
   overflow: hidden;
 }
+
 .glass-card__qr img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.glass-card__text { text-align: left; color: #fff; }
+
+.glass-card__text {
+  text-align: left;
+  color: #fff;
+}
+
 .glass-card__title {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.125rem, 3vw, 1.375rem);
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.05em;
   margin-bottom: 10px;
 }
-.glass-card__title strong { font-weight: 900; }
+
+.glass-card__title strong {
+  font-weight: 900;
+}
+
 .glass-card__desc {
-  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  font-size: clamp(1rem, 3vw, 1.3rem);
   letter-spacing: -0.05em;
   opacity: 0.85;
 }
 
-.mobile-br { display: none; }
+.mobile-br {
+  display: none;
+}
 
 /* ── 아래 화살표 ── */
 .hero__arrow {
+  position: relative;
+  /* z-index를 쓰기 위해 필요 */
   display: flex;
   justify-content: center;
   margin-top: 20px;
   opacity: 0.6;
+  z-index: 20;
+  /* 스마트폰(10)보다 높게 설정해서 위로 띄움 */
+
 }
+
 .arrow-down-lottie {
   width: 90px;
   height: 90px;
@@ -373,28 +475,74 @@ a {
 
 /* ── 이벤트 참여 방법 ── */
 .hero__how {
+  position: relative;
+  /* z-index를 쓰기 위해 필요 */
   width: 100%;
-  padding: 52px 0 60px;
-  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  /* 스마트폰(10)보다 높게 설정해서 위로 띄움 */
+  overflow: visible;
+  padding-bottom: 100px;
+
+}
+
+.hero__how-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  justify-content: center;
+  gap: 50px;
+  margin: 20px auto 0;
+
+  /* 1. 반응형 및 라운드 설정 */
+  width: 100%;
+  max-width: 1070px;
+  height: auto;
+  /* 내용물에 따라 높이가 자동으로 조절됩니다 */
+  border-radius: 50px;
+
+  /* 2. 검푸른 틴트 그라데이션 */
+  background: linear-gradient(120deg,
+      rgba(15, 23, 42, 0.55) 0%,
+      rgba(0, 0, 0, 0.25) 100%);
+
+  /* 3. 배경 블러 처리 */
+  backdrop-filter: blur(30px) saturate(120%);
+  -webkit-backdrop-filter: blur(30px) saturate(120%);
+
+  /* 4. 테두리 및 그림자 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.7);
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(20px, 16vw, 100px) clamp(8px, 6vw, 127px);
+  gap: 60px;
 }
+
 .hero__how-title {
-  font-size: clamp(3.375rem, 3.8vw, 3.875rem); /* 54~62px*/
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2.875rem, 3.8vw, 3.875rem);
+  /* 32~62px*/
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.05em;
+    line-height: 1.3;
 }
+
 .hero__how-steps {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 30px;
   width: 100%;
   max-width: 720px;
 }
+
 .hero__how-step {
   display: flex;
   flex-direction: column;
@@ -403,25 +551,29 @@ a {
   flex: 1;
   min-width: 0;
 }
+
 .hero__how-step-img {
-  width: clamp(70px, 16vw, 160px);
-  height: clamp(70px, 16vw, 160px);
+  width: auto;
+  height: clamp(180px, 16vw, 210px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .hero__how-step-img img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
+
 .hero__how-step-label {
-  color: rgba(255,255,255,0.9);
-  font-size: clamp(0.7rem, 1.6vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.375rem;
   text-align: center;
   letter-spacing: -0.05em;
   line-height: 1.3;
 }
+
 .hero__how-arrow {
   flex-shrink: 0;
   display: flex;
@@ -460,7 +612,8 @@ a {
 }
 
 .section__title {
-  font-size: clamp(3.375rem, 3.8vw, 3.875rem); /* 54~62px*/
+  font-size: clamp(2.875rem, 3.8vw, 3.875rem);
+  /* 32~62px*/
   font-weight: 700;
   color: var(--text);
   line-height: 1.3;
@@ -502,24 +655,29 @@ a {
 
 /* 이미지를 감싸고 있는 '바구니' 설정 */
 .step-circle__img {
-  width: clamp(180px, 26vw, 300px);  /* 이미지와 같은 크기 혹은 고정 크기 */
+  width: clamp(180px, 26vw, 300px);
+  /* 이미지와 같은 크기 혹은 고정 크기 */
   height: clamp(180px, 26vw, 300px);
-  border-radius: 50%;               /* 원형이라면 추가 */
-  
+  border-radius: 50%;
+  /* 원형이라면 추가 */
+
   /* ⭐ 핵심: 이 영역을 벗어나는 건 안 보이게 잘라냅니다! */
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 /* '바구니' 안의 '과일(이미지)' 설정 */
 .step-circle__img img {
-  width: 100%;                      /* 바구니에 꽉 차게 */
+  width: 100%;
+  /* 바구니에 꽉 차게 */
   height: 100%;
   object-fit: cover;
-  transition: all 0.5s ease;        /* 조금 더 부드럽게 0.5초로 늘려봤어요 */
+  transition: all 0.5s ease;
+  /* 조금 더 부드럽게 0.5초로 늘려봤어요 */
 }
 
 .step-circle__img img:hover {
-  transform: scale(1.2);            /* 1.5는 너무 클 수 있으니 1.2 정도부터 테스트해보세요! */
+  transform: scale(1.2);
+  /* 1.5는 너무 클 수 있으니 1.2 정도부터 테스트해보세요! */
 }
 
 
@@ -551,7 +709,8 @@ a {
   background: var(--pica-orange);
   border-radius: var(--r-lg);
   color: var(--content-white);
-  font-size: 0.9rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
   letter-spacing: -0.05em;
   width: fit-content;
   margin: 0 auto;
@@ -644,7 +803,8 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px; /* 아이콘과 글자 사이 간격 */
+  gap: 12px;
+  /* 아이콘과 글자 사이 간격 */
   width: 200px;
   height: 52px;
   border-radius: var(--r-lg);
@@ -662,8 +822,10 @@ a {
 .tag_icon_daily,
 .tag_icon_funny,
 .tag_mission {
-width: auto;   /* 원래 이미지의 가로 크기대로 */
-  height: auto;  /* 원래 이미지의 세로 크기대로 */
+  width: auto;
+  /* 원래 이미지의 가로 크기대로 */
+  height: auto;
+  /* 원래 이미지의 세로 크기대로 */
   object-fit: contain;
 }
 
@@ -671,12 +833,18 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   background: var(--pica-red);
   border: 2px solid var(--pica-red);
   color: var(--content-white);
+  display: inline-flex;
+  /* gap을 인식시키기 위해 필수! */
+  gap: 12px;
 }
 
 .tag--outline {
   background: transparent;
   border: 2px solid var(--pica-red);
   color: var(--pica-deep-orange);
+  display: inline-flex;
+  /* gap을 인식시키기 위해 필수! */
+  gap: 12px;
 }
 
 .tag--yellow {
@@ -712,16 +880,19 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   font-size: 1.375rem;
   color: var(--text);
   letter-spacing: -0.05em;
-/* 최소px, 화면 너비의 5%만큼 유동적으로, 최대px */
+  /* 최소px, 화면 너비의 5%만큼 유동적으로, 최대px */
   margin-bottom: clamp(10px, 8vw, 80px);
 }
 
 /* Carousel: stacked & sliding */
 .card-carousel {
   position: relative;
-  width: 100%;       /* 고정 760px 대신 100%로 채우기 */
-  max-width: 800px;  /* 하지만 너무 커지지는 않게 마지노선 정하기 */
-  height: 360px;     /* 높이는 적당히 유지 */
+  width: 100%;
+  /* 고정 760px 대신 100%로 채우기 */
+  max-width: 800px;
+  /* 하지만 너무 커지지는 않게 마지노선 정하기 */
+  height: 360px;
+  /* 높이는 적당히 유지 */
   margin: 0 auto;
   perspective: 1000px;
   /* overflow: hidden; */
@@ -736,7 +907,7 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
 .card-carousel__item {
   position: absolute;
   /* 고정 px 대신 clamp를 써서 '똑똑한' 크기 만들기 */
-  width: clamp(180px, 30vw, 250px);  
+  width: clamp(180px, 30vw, 250px);
   height: clamp(260px, 40vh, 360px);
   border-radius: 15px;
   overflow: hidden;
@@ -808,11 +979,10 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
 ════════════════════════════════════════ */
 .footer {
   position: relative;
-  background: linear-gradient(180deg,
-      #0a0e27 0%, #0c102a 7%, #0e122d 14%, #111330 21%,
-      #131533 29%, #151737 36%, #18193a 43%, #1a1b3d 50%,
-      #1d1b3f 57%, #201b42 64%, #221b44 71%, #251b47 79%,
-      #281b49 86%, #2a1b4c 93%, #2d1b4e 100%);
+  background: radial-gradient(circle at 90% 90%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 10% 50%, rgba(29, 39, 105, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #06091c 0%, #0a0e27 100%);
+      
   padding: 78px 28px;
   text-align: center;
   overflow: hidden;
@@ -930,7 +1100,8 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   }
 
   .hero__content {
-    padding: 36px 20px 0;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .hero__how {
@@ -939,17 +1110,20 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   }
 
   .hero__how-steps {
-    gap: 10px;
+    flex-direction: column;
+    gap: 30px;
   }
 
   .hero__how-arrow {
-    width: 8px;
-    height: 14px;
-    overflow: hidden;
+    width: 14px;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   .hero__how-arrow svg {
-    width: 100%;
-    height: 100%;
+    transform: rotate(90deg);
   }
 
   .step-circle {
@@ -984,26 +1158,28 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
     padding-top: 0;
     width: 8px;
     height: 14px;
+    rotate: 90deg;
   }
 
   .glass-card {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 16px 18px;
     gap: 14px;
-    margin: 20px auto 0;
+    margin: clamp(-180px, -8vw, -50px) auto 0;
   }
 
-  .glass-card__qr {
+  /* .glass-card__qr {
     width: 80px;
     height: 80px;
-  }
+  } */
 
   .glass-card__text {
     text-align: center;
   }
 
   .glass-card__title {
-    font-size: 18px;
     text-align: center;
     margin-bottom: 10px;
   }
@@ -1013,7 +1189,6 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   }
 
   .info-banner {
-    font-size: 16px;
     align-items: center;
     gap: 20px;
   }
@@ -1034,7 +1209,7 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   .card-carousel {
     width: 320px;
     height: clamp(170px, 30vh, 360px);
- 
+
 
     overflow: visible;
   }
@@ -1286,13 +1461,20 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
   .bonus-section {
     padding-bottom: 0px;
   }
+
+  .hero__how-inner {
+    margin: -40px auto 0;
+  }
 }
+
 /* 중간단계 카드캐러셀 전용, 단계설정은 min-width: 수정 */
 @media (min-width: 560px) and (max-width: 1000px) {
   .card-carousel__item {
-    width: 240px; /* 고정값으로 큼직하게 박아버리기! */
+    width: 240px;
+    /* 고정값으로 큼직하게 박아버리기! */
     height: 340px;
   }
+
   .card-carousel__item[data-pos="0"] {
     transform: translate(-50%, -50%) translateX(-220px) scale(0.67);
     opacity: 0.3;
@@ -1318,9 +1500,11 @@ width: auto;   /* 원래 이미지의 가로 크기대로 */
     opacity: 0.3;
   }
 }
+
 @media (min-width: 320px) and (max-width: 560px) {
   .card-carousel__item {
-    width: 144px; /* 고정값으로 큼직하게 박아버리기! */
+    width: 144px;
+    /* 고정값으로 큼직하게 박아버리기! */
     height: 204px;
   }
 }
