@@ -196,7 +196,7 @@ a {
   justify-content: flex-start;
   padding: 7.5% 8% 24%;
 
-  /* 아까 wrap에 있던 배경 스타일을 여기로 가져옵니다 */
+  /* 배경 스타일 */
   background: linear-gradient(180deg,
       rgba(15, 23, 42, 0.2) 0%,
       rgba(0, 0, 0, 0.05) 100%);
@@ -206,10 +206,10 @@ a {
   /* 프레임 안쪽 화면의 둥근 모서리 */
   border-radius: clamp(0px, 12vw, 212px);
   overflow: hidden;
-  /* 중요! 이걸 써야 안쪽 내용물도 같이 둥글게 잘립니다 */
+  /* 중요! overflow hidden을 써야 안쪽 내용물도 같이 둥글게 잘립니다 안그러면 삐죽삐죽 튀어나옴 ㅠㅠ */
 }
 
-/* ── 피카플레이 풍선 로고 ── */
+/* ── 피카플레이 말풍선 로고 ── */
 .hero__balloon {
   display: flex;
   /* 부모를 flex로 만듭니다 */
@@ -226,7 +226,6 @@ a {
   height: clamp(40px, 10vw, 80px);
   width: auto;
   /* 비율 유지 */
-  /* margin: 0 auto; 는 삭제해도 됩니다 (flex가 대신 정렬해주니까요) */
   display: block;
   /* 이미지를 블록화해서 불필요한 공백 제거 */
 }
@@ -252,23 +251,6 @@ a {
   margin-bottom: 9px;
 }
 
-
-/* .hero__scan-weekly { color: #fff; }
-.hero__scan-suffix { font-size: clamp(15px, 5.5vw, 30px); } */
-
-/* 스캔 코너 마크 */
-/* .hero__scan-corner {
-  position: absolute;
-  width: clamp(16px, 4.5vw, 26px);
-  height: clamp(16px, 4.5vw, 26px);
-  border-color: rgba(184,184,184,0.85);
-  border-style: solid;
-}
-.hero__scan-corner.tl { top:0;    left:0;   border-width: 2px 0 0 2px; }
-.hero__scan-corner.tr { top:0;    right:0;  border-width: 2px 2px 0 0; }
-.hero__scan-corner.bl { bottom:0; left:0;   border-width: 0 0 2px 2px; }
-.hero__scan-corner.br { bottom:0; right:0;  border-width: 0 2px 2px 0; } */
-
 /* 스캔 라인 */
 .hero__scan-line {
   position: absolute;
@@ -277,16 +259,14 @@ a {
   left: -5%;
   top: 4%;
   z-index: 2;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 59, 48, 0.4) 8%,
-    #FF3B30 24%,
-    #ffb3af 50%,
-    #FF3B30 76%,
-    rgba(255, 59, 48, 0.4) 92%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(255, 59, 48, 0.4) 8%,
+      #FF3B30 24%,
+      #ffb3af 50%,
+      #FF3B30 76%,
+      rgba(255, 59, 48, 0.4) 92%,
+      transparent 100%);
   box-shadow:
     0 0 8px 2px rgba(255, 59, 48, 0.55),
     0 0 22px rgba(255, 59, 48, 0.28);
@@ -301,17 +281,22 @@ a {
   left: 0;
   right: 0;
   height: clamp(20px, 5vw, 38px);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 59, 48, 0.18) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 59, 48, 0.18) 0%,
+      transparent 100%);
   pointer-events: none;
 }
 
 @keyframes scanMove {
-  0%, 100% { top: 4%; }
-  50%       { top: 87%; }
+
+  0%,
+  100% {
+    top: 4%;
+  }
+
+  50% {
+    top: 87%;
+  }
 }
 
 .hero__sub-img {
@@ -470,7 +455,7 @@ a {
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.05em;
-    line-height: 1.3;
+  line-height: 1.3;
 }
 
 .hero__how-steps {
@@ -833,7 +818,6 @@ a {
   /* 높이는 적당히 유지 */
   margin: 0 auto;
   perspective: 1000px;
-  /* overflow: hidden; */
 }
 
 .card-carousel__track {
@@ -909,7 +893,7 @@ a {
   background: radial-gradient(circle at 90% 90%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
     radial-gradient(circle at 10% 50%, rgba(29, 39, 105, 0.8) 0%, transparent 60%),
     linear-gradient(180deg, #06091c 0%, #0a0e27 100%);
-      
+
   padding: 78px 28px;
   text-align: center;
   overflow: hidden;
@@ -1135,8 +1119,6 @@ a {
   .card-carousel {
     width: 320px;
     height: clamp(170px, 30vh, 360px);
-
-
     overflow: visible;
   }
 
@@ -1171,17 +1153,35 @@ a {
   }
 
   .section__hd--coins {
-    align-items: flex-start;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
   }
 
-  .coins-left,
-  .coins-right {
-    display: none;
+  .coins-left {
+    width: 48px;
+    height: 84px;
+  }
+
+  .coin--back {
+    width: 40px;
+    height: 30px;
+    left: 4px;
+  }
+
+  .coin--front {
+    width: 38px;
+    height: 35px;
+  }
+
+  .coin--right {
+    width: 40px;
+    height: 37px;
   }
 
   .coins-center {
     padding: 0px;
-    margin: 0 0 50px 0;
+    margin: 0;
   }
 
   .benefit-row__title {
@@ -1430,7 +1430,13 @@ a {
 @media (min-width: 320px) and (max-width: 560px) {
   .card-carousel__item {
     width: 144px;
-    /* 고정값으로 큼직하게 박아버리기! */
     height: 204px;
+  }
+}
+
+@media (max-width: 479px) {
+  .coins-left,
+  .coins-right {
+    display: none;
   }
 }
