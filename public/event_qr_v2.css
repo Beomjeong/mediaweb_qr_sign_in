@@ -1395,9 +1395,12 @@ a {
 
 /* 중간단계 카드캐러셀 전용, 단계설정은 min-width: 수정 */
 @media (min-width: 560px) and (max-width: 1000px) {
+  .card-carousel {
+    height: 430px;
+  }
+
   .card-carousel__item {
     width: 240px;
-    /* 고정값으로 큼직하게 박아버리기! */
     height: 340px;
   }
 
