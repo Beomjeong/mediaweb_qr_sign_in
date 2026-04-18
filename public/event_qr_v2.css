@@ -151,7 +151,7 @@ a {
   /* ─── 수정된 핵심 부분 ─── */
   width: auto;
   max-width: 1100px;
-  min-width: 340;
+  min-width: 340px;
   margin: 0 auto;
   /* 박스 자체를 중앙에 위치시킴 */
   left: 0;
