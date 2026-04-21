@@ -1,0 +1,1444 @@
+/* ═══════════════════════════════════════════
+   PICAPLAY QR 이벤트 V2 — event_qr_v2.css
+   Based on Figma design
+═══════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111827;
+  background: #fff;
+  overflow-x: clip;
+  position: relative;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Variables ────────────────────────── */
+:root {
+  --bg-dark: #1e1b2b;
+  --bg-white: #ffffff;
+  --bg-light: #f1f1f9;
+  --pica-yellow: rgba(251, 205, 0, 0.85);
+  --pica-orange: rgba(252, 151, 11, 0.85);
+  --pica-red: rgba(251, 78, 2, 0.85);
+  --pica-deep-orange: #f80;
+  --content-dark: #151518;
+  --content-white: #ffffff;
+  --text: #111827;
+  --text-m: #6B7280;
+  --r: 18px;
+  --r-lg: 30px;
+  --max-w: 1100px;
+  --py: 100px;
+}
+
+/* ── Utility ──────────────────────────── */
+.container {
+  max-width:
+    var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── AOS (scroll reveal) ──────────────── */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+[data-aos].aos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos][data-delay="1"] {
+  transition-delay: 0.1s;
+}
+
+[data-aos][data-delay="2"] {
+  transition-delay: 0.2s;
+}
+
+[data-aos][data-delay="3"] {
+  transition-delay: 0.3s;
+}
+
+[data-aos][data-delay="4"] {
+  transition-delay: 0.4s;
+}
+
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(circle at 90% 90%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 10% 50%, rgba(29, 39, 105, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #06091c 0%, #0a0e27 100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 자식인 .hero__content를 가로 중앙으로 보냄 */
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 배경 플로팅 장식 */
+.hero__float {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero__float--left {
+  left: 0;
+  top: 0;
+  width: 30%;
+  /* max-width: 400px; */
+}
+
+.hero__float--right {
+  right: 0;
+  top: 20%;
+  width: 30%;
+  /* max-width: 400px; */
+}
+
+/* 히어로 콘텐츠 래퍼 */
+.hero__content {
+  position: relative;
+  z-index: 5;
+
+  /* ─── 수정된 핵심 부분 ─── */
+  width: auto;
+  max-width: 1100px;
+  min-width: 340px;
+  margin: 0 auto;
+  /* 박스 자체를 중앙에 위치시킴 */
+  left: 0;
+  /* 50%를 지우고 0으로 초기화 */
+  transform: none;
+  /* translateX를 지움 */
+  /* ────────────────────── */
+
+  /* padding: 0px 28px 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── 스마트폰 전체 컨테이너 (배경 장식 — float 위, 콘텐츠 아래) ── */
+.hero__phone-wrap {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(300px, 60vw, 720px);
+  z-index: 3;
+  pointer-events: none;
+  background: none;
+  overflow: visible;
+}
+
+/* ── 휴대폰 프레임 이미지 ── */
+.hero__phone-img {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ── 스크린 오버레이 (디스플레이 배경) ── */
+.hero__screen {
+  position: absolute;
+  /* inset: 0 대신 프레임 안쪽 검은 화면에 맞춰 살짝 여백을 줍니다 */
+  top: 3%;
+  left: 1%;
+  right: 1%;
+  bottom: 1%;
+
+  z-index: 1;
+  /* 프레임(10)보다 아래에 위치 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 7.5% 8% 24%;
+
+  /* 배경 스타일 */
+  background: linear-gradient(180deg,
+      rgba(15, 23, 42, 0.2) 0%,
+      rgba(0, 0, 0, 0.05) 100%);
+  backdrop-filter: blur(15px) saturate(120%);
+  -webkit-backdrop-filter: blur(15px) saturate(120%);
+
+  /* 프레임 안쪽 화면의 둥근 모서리 */
+  border-radius: clamp(0px, 12vw, 212px);
+  overflow: hidden;
+  /* 중요! overflow hidden을 써야 안쪽 내용물도 같이 둥글게 잘립니다 안그러면 삐죽삐죽 튀어나옴 ㅠㅠ */
+}
+
+/* ── 피카플레이 말풍선 로고 ── */
+.hero__balloon {
+  display: flex;
+  /* 부모를 flex로 만듭니다 */
+  justify-content: center;
+  /* 가로 중앙 정렬 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  width: 100%;
+  /* 부모 박스 너비를 꽉 채워 기준을 잡습니다 */
+  margin-bottom: 5px;
+}
+
+.hero__balloon img {
+  height: clamp(40px, 10vw, 80px);
+  width: auto;
+  /* 비율 유지 */
+  display: block;
+  /* 이미지를 블록화해서 불필요한 공백 제거 */
+}
+
+/* ── 메인 타이틀 ── */
+.hero__title {
+  font-size: clamp(18px, 6.5vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+  margin-bottom: 9px;
+}
+
+/* ── QR 스캔 영역 ── */
+.hero__scan {
+  position: relative;
+  width: 76%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 9px;
+}
+
+/* 스캔 라인 */
+.hero__scan-line {
+  position: absolute;
+  width: 110%;
+  height: 2px;
+  left: -5%;
+  top: 4%;
+  z-index: 2;
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(255, 59, 48, 0.4) 8%,
+      #FF3B30 24%,
+      #ffb3af 50%,
+      #FF3B30 76%,
+      rgba(255, 59, 48, 0.4) 92%,
+      transparent 100%);
+  box-shadow:
+    0 0 8px 2px rgba(255, 59, 48, 0.55),
+    0 0 22px rgba(255, 59, 48, 0.28);
+  animation: scanMove 2.8s ease-in-out infinite;
+}
+
+/* 스캔 라인 아래 광택 스윕 */
+.hero__scan-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(20px, 5vw, 38px);
+  background: linear-gradient(to bottom,
+      rgba(255, 59, 48, 0.18) 0%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+@keyframes scanMove {
+
+  0%,
+  100% {
+    top: 4%;
+  }
+
+  50% {
+    top: 87%;
+  }
+}
+
+.hero__sub-img {
+  display: block;
+  /* 이미지 주변의 불필요한 공백 제거 */
+  width: 85%;
+  max-width: 743px;
+  /* 부모 박스 너비를 넘지 않게 */
+  height: auto;
+  /* 비율 유지 */
+  margin: 0 auto;
+  /* 가로 중앙 정렬 */
+
+  /* 기존 <p> 태그에 있던 여백(margin)이나 패딩(padding)이 필요하다면 여기에 추가해 주세요 */
+  margin-top: clamp(30px, 5.5vw, 60px);
+  /* 예시: 위쪽 여백 */
+}
+
+/* ── QR 당첨확률 카드 ── */
+.glass-card {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 30px 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 1px 1px 1px rgba(255, 255, 255, 0.15),
+    inset -1px -1px 1px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.25);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  width: 90%;
+  max-width: 740px;
+  /* 간격 = sub-img(titletxt_lucky_7person) 렌더 높이 */
+  margin: clamp(-220px, -32vw, -180px) auto 0;
+  position: relative;
+  z-index: 10;
+  /* 폰(z-index:3)보다 위 */
+}
+
+.glass-card__qr {
+  flex-shrink: 0;
+  width: clamp(80px, 6vw, 150px);
+  height: clamp(80px, 6vw, 150px);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.glass-card__qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.glass-card__text {
+  text-align: left;
+  color: #fff;
+}
+
+.glass-card__title {
+  font-size: clamp(1.125rem, 3vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+  margin-bottom: 10px;
+}
+
+.glass-card__title strong {
+  font-weight: 900;
+}
+
+.glass-card__desc {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  letter-spacing: -0.05em;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.mobile-br {
+  display: none;
+}
+
+/* ── 아래 화살표 ── */
+.hero__arrow {
+  position: relative;
+  /* z-index를 쓰기 위해 필요 */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  opacity: 0.6;
+  z-index: 20;
+  /* 스마트폰(10)보다 높게 설정해서 위로 띄움 */
+
+}
+
+.arrow-down-lottie {
+  width: 90px;
+  height: 90px;
+}
+
+/* ── 이벤트 참여 방법 ── */
+.hero__how {
+  position: relative;
+  /* z-index를 쓰기 위해 필요 */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  /* 스마트폰(10)보다 높게 설정해서 위로 띄움 */
+  overflow: visible;
+  padding-bottom: 100px;
+
+}
+
+.hero__how-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 0;
+
+  /* 1. 반응형 및 라운드 설정 */
+  width: 100%;
+  max-width: 1070px;
+  height: auto;
+  /* 내용물에 따라 높이가 자동으로 조절됩니다 */
+  border-radius: 50px;
+
+  /* 2. 검푸른 틴트 그라데이션 */
+  background: linear-gradient(120deg,
+      rgba(15, 23, 42, 0.55) 0%,
+      rgba(0, 0, 0, 0.25) 100%);
+
+  /* 3. 배경 블러 처리 */
+  backdrop-filter: blur(30px) saturate(120%);
+  -webkit-backdrop-filter: blur(30px) saturate(120%);
+
+  /* 4. 테두리 및 그림자 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.7);
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(20px, 16vw, 100px) clamp(8px, 6vw, 127px);
+  gap: 60px;
+}
+
+.hero__how-title {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2.875rem, 3.8vw, 3.875rem);
+  /* 32~62px*/
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+}
+
+.hero__how-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 720px;
+}
+
+.hero__how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__how-step-img {
+  width: auto;
+  height: clamp(180px, 16vw, 210px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__how-step-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.hero__how-step-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.375rem;
+  text-align: center;
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+}
+
+.hero__how-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+
+/* ════════════════════════════════════════
+   SECTION BASE
+════════════════════════════════════════ */
+.section {
+  padding: var(--py) 0;
+}
+
+.section--white {
+  background: var(--bg-white);
+}
+
+.section--light {
+  background: var(--bg-light);
+}
+
+.section__hd {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section__label {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--pica-orange);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.section__title {
+  font-size: clamp(2.875rem, 3.8vw, 3.875rem);
+  /* 32~62px*/
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+
+/* ════════════════════════════════════════
+   STEPS (원형)
+════════════════════════════════════════ */
+.steps-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  margin-bottom: 20px;
+}
+
+.step-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: clamp(180px, 26vw, 300px);
+}
+
+.step-circle__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 53px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50px;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+}
+
+/* 이미지를 감싸고 있는 '바구니' 설정 */
+.step-circle__img {
+  width: clamp(180px, 26vw, 300px);
+  /* 이미지와 같은 크기 혹은 고정 크기 */
+  height: clamp(180px, 26vw, 300px);
+  border-radius: 50%;
+  /* 원형이라면 추가 */
+
+  /* ⭐ 핵심: 이 영역을 벗어나는 건 안 보이게 잘라냅니다! */
+  overflow: hidden;
+}
+
+/* '바구니' 안의 '과일(이미지)' 설정 */
+.step-circle__img img {
+  width: 100%;
+  /* 바구니에 꽉 차게 */
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  /* 조금 더 부드럽게 0.5초로 늘려봤어요 */
+}
+
+.step-circle__img img:hover {
+  transform: scale(1.2);
+  /* 1.5는 너무 클 수 있으니 1.2 정도부터 테스트해보세요! */
+}
+
+
+.step-circle__desc {
+  font-size: 1.375rem;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+}
+
+.step-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin: 0 40px;
+  padding-top: 40px;
+}
+
+/* Info banner */
+.info-banner {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: var(--pica-orange);
+  border-radius: var(--r-lg);
+  color: var(--content-white);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.info-banner__icon {
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+
+/* ════════════════════════════════════════
+   BENEFIT ROWS
+════════════════════════════════════════ */
+.benefit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.benefit-row__img {
+  flex-shrink: 0;
+  width: 50%;
+  height: 393px;
+  overflow: hidden;
+}
+
+
+.benefit-row__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.benefit-row__text {
+  flex-shrink: 0;
+  width: 50%;
+  height: 393px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 39px;
+}
+
+.benefit-row__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.benefit-row__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+}
+
+.benefit-row__desc {
+  font-size: 1.375rem;
+  color: var(--text);
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+}
+
+/* Tags */
+.tag-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tag-group--row {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.tag-group--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /* 아이콘과 글자 사이 간격 */
+  width: 200px;
+  height: 52px;
+  border-radius: var(--r-lg);
+  font-size: 1.375rem;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  /* "모든 변화(all)를 0.3초(0.3s) 동안 부드럽게(ease) 보여줘"라는 뜻이에요 */
+  /* transition: all 0.3s ease; */
+}
+
+/* .tag:hover {
+  transform: scale(1.1); 
+} */
+
+.tag_icon_daily,
+.tag_icon_funny,
+.tag_mission {
+  width: auto;
+  /* 원래 이미지의 가로 크기대로 */
+  height: auto;
+  /* 원래 이미지의 세로 크기대로 */
+  object-fit: contain;
+}
+
+.tag--filled {
+  background: var(--pica-red);
+  border: 2px solid var(--pica-red);
+  color: var(--content-white);
+  display: inline-flex;
+  /* gap을 인식시키기 위해 필수! */
+  gap: 12px;
+}
+
+.tag--outline {
+  background: transparent;
+  border: 2px solid var(--pica-red);
+  color: var(--pica-deep-orange);
+  display: inline-flex;
+  /* gap을 인식시키기 위해 필수! */
+  gap: 12px;
+}
+
+.tag--yellow {
+  background: var(--pica-yellow);
+  border: 2px solid var(--pica-yellow);
+  color: var(--content-dark);
+}
+
+.tag--dark {
+  background: var(--content-dark);
+  border: 2px solid var(--content-dark);
+  color: var(--pica-yellow);
+}
+
+
+/* ════════════════════════════════════════
+   BONUS SECTION (모르면 손해)
+════════════════════════════════════════ */
+.bonus-section {
+  text-align: center;
+  padding-top: var(--py);
+  padding-bottom: 10px;
+}
+
+.bonus-section__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.05em;
+}
+
+.bonus-section__desc {
+  font-size: 1.375rem;
+  color: var(--text);
+  letter-spacing: -0.05em;
+  /* 최소px, 화면 너비의 5%만큼 유동적으로, 최대px */
+  margin-bottom: clamp(10px, 8vw, 80px);
+}
+
+/* Carousel: stacked & sliding */
+.card-carousel {
+  position: relative;
+  width: 100%;
+  /* 고정 760px 대신 100%로 채우기 */
+  max-width: 800px;
+  /* 하지만 너무 커지지는 않게 마지노선 정하기 */
+  height: 360px;
+  /* 높이는 적당히 유지 */
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.card-carousel__track {
+  position: relative;
+  width: 100%;
+  height: 100%
+}
+
+.card-carousel__item {
+  position: absolute;
+  /* 고정 px 대신 clamp를 써서 '똑똑한' 크기 만들기 */
+  width: clamp(180px, 30vw, 250px);
+  height: clamp(260px, 40vh, 360px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 13px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  top: 40%;
+  left: 50%;
+}
+
+.card-carousel__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 5장 카드 위치 (겹침 배치) */
+/* 0: 가장 뒤 왼쪽 */
+.card-carousel__item[data-pos="0"] {
+  transform: translate(-50%, -50%) translateX(-250px) scale(0.72);
+  z-index: 1;
+  opacity: 0.3;
+  filter: blur(1px);
+}
+
+/* 1: 뒤 왼쪽 */
+.card-carousel__item[data-pos="1"] {
+  transform: translate(-50%, -50%) translateX(-150px) scale(0.85);
+  z-index: 2;
+  opacity: 0.65;
+}
+
+/* 2: 중앙 (메인) */
+.card-carousel__item[data-pos="2"] {
+  transform: translate(-50%, -50%) translateX(0) scale(1);
+  z-index: 5;
+  opacity: 1;
+}
+
+/* 3: 뒤 오른쪽 */
+.card-carousel__item[data-pos="3"] {
+  transform: translate(-50%, -50%) translateX(150px) scale(0.85);
+  z-index: 2;
+  opacity: 0.65;
+}
+
+/* 4: 가장 뒤 오른쪽 */
+.card-carousel__item[data-pos="4"] {
+  transform: translate(-50%, -50%) translateX(250px) scale(0.72);
+  z-index: 1;
+  opacity: 0.3;
+  filter: blur(1px);
+}
+
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+.footer {
+  position: relative;
+  background: radial-gradient(circle at 90% 90%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 10% 50%, rgba(29, 39, 105, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #06091c 0%, #0a0e27 100%);
+
+  padding: 78px 28px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer__content {
+  font-size: 1.125rem;
+  position: relative;
+  z-index: 2;
+}
+
+
+.footer p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  letter-spacing: -0.05em;
+  line-height: 1.5;
+}
+
+
+/* ── Coins ───────────────────────────── */
+.section__hd--coins {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 39px;
+  margin-bottom: 60px;
+}
+
+.section__hd--coins .section__label,
+.section__hd--coins .section__title {
+  display: block;
+}
+
+.coins-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.coins-left {
+  position: relative;
+  width: 81px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.coin--back {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  width: 68px;
+  height: 50px;
+  transform: rotate(-6.94deg);
+  object-fit: contain;
+}
+
+.coin--front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 59px;
+  object-fit: contain;
+}
+
+.coins-right {
+  flex-shrink: 0;
+}
+
+.coin--right {
+  width: 66px;
+  height: 61px;
+  object-fit: contain;
+}
+
+/* ── FADE KEYFRAMES ──────────────────── */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 12.8px;
+  }
+
+  :root {
+    --py: 50px;
+  }
+
+  .section__label {
+    margin-bottom: 4px;
+  }
+
+  .hero__content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero__how {
+    padding: 40px 20px 48px;
+    margin-top: 32px;
+  }
+
+  .hero__how-steps {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .hero__how-arrow {
+    width: 14px;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__how-arrow svg {
+    transform: rotate(90deg);
+  }
+
+  .step-circle {
+    gap: 10px;
+  }
+
+  .step-circle__img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .step-circle__img img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  .steps-row {
+    flex-direction: column;
+    margin-bottom: 20px;
+    gap: 20px;
+  }
+
+  .step-circle__badge {
+    width: 110px;
+    height: 40px;
+  }
+
+  .step-arrow {
+    margin: 0;
+    padding-top: 0;
+    width: 8px;
+    height: 14px;
+    rotate: 90deg;
+  }
+
+  .glass-card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 18px;
+    gap: 14px;
+    margin: clamp(-180px, -8vw, -50px) auto 0;
+  }
+
+  /* .glass-card__qr {
+    width: 80px;
+    height: 80px;
+  } */
+
+  .glass-card__text {
+    text-align: center;
+  }
+
+  .glass-card__title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .glass-card__desc {
+    text-align: center;
+  }
+
+  .info-banner {
+    align-items: center;
+    gap: 20px;
+  }
+
+  .section__hd {
+    margin-bottom: 20px;
+  }
+
+  .tag-group--grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-br {
+    display: inline;
+    text-align: center;
+  }
+
+  .card-carousel {
+    width: 320px;
+    height: clamp(170px, 30vh, 360px);
+    overflow: visible;
+  }
+
+  .card-carousel__item {
+    width: 105px;
+    height: 151px;
+  }
+
+  .card-carousel__item[data-pos="0"] {
+    transform: translate(-50%, -50%) translateX(-125px) scale(0.67);
+    opacity: 0.3;
+  }
+
+  .card-carousel__item[data-pos="1"] {
+    transform: translate(-50%, -50%) translateX(-70px) scale(0.86);
+    opacity: 0.8;
+  }
+
+  .card-carousel__item[data-pos="2"] {
+    transform: translate(-50%, -50%) translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  .card-carousel__item[data-pos="3"] {
+    transform: translate(-50%, -50%) translateX(70px) scale(0.86);
+    opacity: 0.8;
+  }
+
+  .card-carousel__item[data-pos="4"] {
+    transform: translate(-50%, -50%) translateX(125px) scale(0.67);
+    opacity: 0.3;
+  }
+
+  .section__hd--coins {
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .coins-left {
+    width: 48px;
+    height: 84px;
+  }
+
+  .coin--back {
+    width: 40px;
+    height: 30px;
+    left: 4px;
+  }
+
+  .coin--front {
+    width: 38px;
+    height: 35px;
+  }
+
+  .coin--right {
+    width: 40px;
+    height: 37px;
+  }
+
+  .coins-center {
+    padding: 0px;
+    margin: 0;
+  }
+
+  .benefit-row__title {
+    font-size: 1.8rem;
+  }
+
+  .benefit-row--reverse {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .benefit-row--col {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 0;
+  }
+
+  .benefit-row--col .benefit-row__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .benefit-row--col .benefit-row__text {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .benefit-row__img {
+    display: none;
+  }
+
+  .benefit-row--reverse .benefit-row__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .benefit-row--reverse .benefit-row__text {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .benefit-row--reverse .tag-group--grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    row-gap: 8px;
+  }
+
+  .benefit-row--daily .benefit-row__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .benefit-row__text {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    flex: 1;
+    height: auto;
+    text-align: left;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .benefit-row__titles {
+    flex: 1;
+  }
+
+  .tag-group,
+  .tag-group--grid,
+  .tag-group--row {
+    flex-direction: column;
+    flex-shrink: 0;
+    width: fit-content;
+    gap: 11px;
+  }
+
+  .tag {
+    width: 180px;
+    padding: 0 20px;
+    height: 48px;
+    font-size: 1rem;
+    justify-content: flex-start;
+  }
+
+  .tag.tag--filled,
+  .tag.tag--outline,
+  .tag.tag--yellow,
+  .tag.tag--dark {
+    justify-content: center;
+  }
+
+  .tag--yellow,
+  .tag--dark {
+    width: 154px;
+    height: 40px;
+  }
+
+  .tag_mission {
+    width: 30px;
+    height: 30px;
+  }
+
+  .bonus-section__title {
+    font-size: 1.8rem;
+  }
+
+  .benefit-row--reverse .benefit-row__titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .benefit-row--reverse .benefit-row__title,
+  .benefit-row--reverse .benefit-row__desc {
+    text-align: center;
+  }
+
+  .benefit-row--reverse .tag {
+    width: 154px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .benefit-row--col .benefit-row__titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .benefit-row--col .benefit-row__title,
+  .benefit-row--col .benefit-row__desc {
+    text-align: center;
+  }
+
+  .benefit-row--col .tag-group--row {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .benefit-row--col .tag--yellow,
+  .benefit-row--col .tag--dark {
+    width: 154px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .tag_icon_daily,
+  .tag_icon_funny {
+    width: 30px;
+    height: 30px;
+  }
+
+  .benefit-row--daily {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .benefit-row--daily .benefit-row__text {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .benefit-row--daily .benefit-row__titles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .benefit-row--daily .benefit-row__title,
+  .benefit-row--daily .benefit-row__desc {
+    text-align: center;
+  }
+
+  .benefit-row--daily .tag-group {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .benefit-row--daily .tag {
+    width: 154px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .bonus-section {
+    padding-bottom: 0px;
+  }
+
+  .hero__how-inner {
+    margin: -40px auto 0;
+  }
+}
+
+/* 중간단계 카드캐러셀 전용, 단계설정은 min-width: 수정 */
+@media (min-width: 560px) and (max-width: 1000px) {
+  .card-carousel__item {
+    width: 240px;
+    /* 고정값으로 큼직하게 박아버리기! */
+    height: 340px;
+  }
+
+  .card-carousel__item[data-pos="0"] {
+    transform: translate(-50%, -50%) translateX(-220px) scale(0.67);
+    opacity: 0.3;
+  }
+
+  .card-carousel__item[data-pos="1"] {
+    transform: translate(-50%, -50%) translateX(-120px) scale(0.86);
+    opacity: 0.8;
+  }
+
+  .card-carousel__item[data-pos="2"] {
+    transform: translate(-50%, -50%) translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  .card-carousel__item[data-pos="3"] {
+    transform: translate(-50%, -50%) translateX(120px) scale(0.86);
+    opacity: 0.8;
+  }
+
+  .card-carousel__item[data-pos="4"] {
+    transform: translate(-50%, -50%) translateX(220px) scale(0.67);
+    opacity: 0.3;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 560px) {
+  .card-carousel__item {
+    width: 144px;
+    height: 204px;
+  }
+}
+
+@media (max-width: 479px) {
+
+  .coins-left,
+  .coins-right {
+    display: none;
+  }
+}
