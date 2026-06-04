@@ -148,25 +148,25 @@ a {
 /* coin01 207×140  x≈450 y≈15 */
 .hero__deco--left .hero__deco-item:nth-child(1) { left: 53.4%; top:  1.1%; width: 24.6%; }
 /* coin02 207×187  x≈15  y≈90 */
-.hero__deco--left .hero__deco-item:nth-child(2) { left:  1.8%; top:  6.3%; width: 24.6%; }
+.hero__deco--left .hero__deco-item:nth-child(2) { left:  1.8%; top:  20.3%; width: 24.6%; }
 /* ic QR  623×604  x≈15  y≈250 */
-.hero__deco--left .hero__deco-item:nth-child(3) { left:  1.8%; top: 17.5%; width: 74.0%; }
+.hero__deco--left .hero__deco-item:nth-child(3) { left:  25.8%; top: 13.5%; width: 74.0%; }
 /* coin03 209×220  x≈185 y≈820 */
-.hero__deco--left .hero__deco-item:nth-child(4) { left: 22.0%; top: 57.5%; width: 24.8%; }
+.hero__deco--left .hero__deco-item:nth-child(4) { left: 22.0%; top: 67.5%; width: 24.8%; }
 /* coupon 396×213  x≈5   y≈1010 */
-.hero__deco--left .hero__deco-item:nth-child(5) { left:  0.6%; top: 70.8%; width: 47.0%; }
+.hero__deco--left .hero__deco-item:nth-child(5) { left:  30.6%; top: 100%; width: 47.0%; }
 
 /* ── 오른쪽 오브젝트 (left%, top%, width% = px ÷ 1301 or 2456 × 100) ── */
 /* coupon1 536×324  x≈10  y≈20 */
-.hero__deco--right .hero__deco-item:nth-child(1) { left:  0.8%; top:  0.8%; width: 41.2%; }
+.hero__deco--right .hero__deco-item:nth-child(1) { left: 55.8%; top:  0.8%; width: 41.2%; }
 /* ic P    690×692  x≈245 y≈450 */
 .hero__deco--right .hero__deco-item:nth-child(2) { left: 18.8%; top: 18.3%; width: 53.0%; }
 /* coupon2 508×253  x≈670 y≈1330 */
 .hero__deco--right .hero__deco-item:nth-child(3) { left: 51.5%; top: 54.2%; width: 39.1%; }
 /* coin1   388×349  x≈5   y≈1700 */
-.hero__deco--right .hero__deco-item:nth-child(4) { left:  0.4%; top: 69.2%; width: 29.8%; }
+.hero__deco--right .hero__deco-item:nth-child(4) { left:  70.4%; top: 69.2%; width: 29.8%; }
 /* coin2   356×354  x≈780 y≈1990 */
-.hero__deco--right .hero__deco-item:nth-child(5) { left: 60.0%; top: 81.1%; width: 27.4%; }
+.hero__deco--right .hero__deco-item:nth-child(5) { left: 15.0%; top: 100%; width: 27.4%; }
 
 /* 히어로 콘텐츠 래퍼 */
 .hero__content {
