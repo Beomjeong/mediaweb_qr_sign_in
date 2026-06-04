@@ -28,9 +28,21 @@
 ══════════════════════════════════════ -->
   <section class="hero">
 
-    <!-- 배경 플로팅 장식 -->
-    <img src="assets/img_hero_float_left.png" alt="" class="hero__float hero__float--left" aria-hidden="true">
-    <img src="assets/img_hero_float_right.png" alt="" class="hero__float hero__float--right" aria-hidden="true">
+    <!-- 배경 플로팅 장식 (패럴렉스) -->
+    <div class="hero__deco hero__deco--left" aria-hidden="true">
+      <img src="assets/bg_float_left_coin01.png" alt="" class="hero__deco-item" data-parallax="0.35">
+      <img src="assets/bg_float_left_coin02.png" alt="" class="hero__deco-item" data-parallax="0.28">
+      <img src="assets/bg_float_left_ic.png"     alt="" class="hero__deco-item" data-parallax="0.12">
+      <img src="assets/bg_float_left_coin03.png" alt="" class="hero__deco-item" data-parallax="0.22">
+      <img src="assets/bg_float_left_coupon.png" alt="" class="hero__deco-item" data-parallax="0.18">
+    </div>
+    <div class="hero__deco hero__deco--right" aria-hidden="true">
+      <img src="assets/bg_float_right_coupon1.png" alt="" class="hero__deco-item" data-parallax="0.30">
+      <img src="assets/bg_float_right_ic.png"      alt="" class="hero__deco-item" data-parallax="0.14">
+      <img src="assets/bg_float_right_coupon2.png" alt="" class="hero__deco-item" data-parallax="0.22">
+      <img src="assets/bg_float_right_coin1.png"   alt="" class="hero__deco-item" data-parallax="0.25">
+      <img src="assets/bg_float_right_coin2.png"   alt="" class="hero__deco-item" data-parallax="0.32">
+    </div>
 
     <div class="hero__content">
 
@@ -473,6 +485,21 @@
         autoplay: true,
         path: 'arrow_down.json'
       });
+    })();
+
+
+    /* ── 6. Hero 패럴렉스 (스크롤 기반) ── */
+    (function () {
+      var items = document.querySelectorAll('.hero__deco-item[data-parallax]');
+      if (!items.length) return;
+      function tick() {
+        var scrollY = window.pageYOffset;
+        for (var i = 0; i < items.length; i++) {
+          var speed = parseFloat(items[i].dataset.parallax) || 0;
+          items[i].style.transform = 'translateY(' + (-scrollY * speed) + 'px)';
+        }
+      }
+      window.addEventListener('scroll', tick, { passive: true });
     })();
 
 

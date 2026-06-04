@@ -112,26 +112,61 @@ a {
   min-height: 100vh;
 }
 
-/* 배경 플로팅 장식 */
-.hero__float {
+/* 배경 플로팅 장식 (패럴렉스)
+   wrapper에 aspect-ratio를 지정해 원본 합성 이미지 비율을 유지,
+   자식 left/top/width는 원본 합성 이미지 픽셀 좌표 ÷ 합성 이미지 크기(%)로 계산 */
+.hero__deco {
   position: absolute;
   pointer-events: none;
   z-index: 2;
+  overflow: visible;
 }
 
-.hero__float--left {
+/* 왼쪽: 원본 합성 842×1427 */
+.hero__deco--left {
   left: 0;
   top: 0;
   width: 30%;
-  /* max-width: 400px; */
+  aspect-ratio: 842 / 1427;
 }
 
-.hero__float--right {
+/* 오른쪽: 원본 합성 1301×2456 */
+.hero__deco--right {
   right: 0;
   top: 20%;
   width: 30%;
-  /* max-width: 400px; */
+  aspect-ratio: 1301 / 2456;
 }
+
+.hero__deco-item {
+  position: absolute;
+  max-width: none;
+  will-change: transform;
+}
+
+/* ── 왼쪽 오브젝트 (left%, top%, width% = px ÷ 842 or 1427 × 100) ── */
+/* coin01 207×140  x≈450 y≈15 */
+.hero__deco--left .hero__deco-item:nth-child(1) { left: 53.4%; top:  1.1%; width: 24.6%; }
+/* coin02 207×187  x≈15  y≈90 */
+.hero__deco--left .hero__deco-item:nth-child(2) { left:  1.8%; top:  6.3%; width: 24.6%; }
+/* ic QR  623×604  x≈15  y≈250 */
+.hero__deco--left .hero__deco-item:nth-child(3) { left:  1.8%; top: 17.5%; width: 74.0%; }
+/* coin03 209×220  x≈185 y≈820 */
+.hero__deco--left .hero__deco-item:nth-child(4) { left: 22.0%; top: 57.5%; width: 24.8%; }
+/* coupon 396×213  x≈5   y≈1010 */
+.hero__deco--left .hero__deco-item:nth-child(5) { left:  0.6%; top: 70.8%; width: 47.0%; }
+
+/* ── 오른쪽 오브젝트 (left%, top%, width% = px ÷ 1301 or 2456 × 100) ── */
+/* coupon1 536×324  x≈10  y≈20 */
+.hero__deco--right .hero__deco-item:nth-child(1) { left:  0.8%; top:  0.8%; width: 41.2%; }
+/* ic P    690×692  x≈245 y≈450 */
+.hero__deco--right .hero__deco-item:nth-child(2) { left: 18.8%; top: 18.3%; width: 53.0%; }
+/* coupon2 508×253  x≈670 y≈1330 */
+.hero__deco--right .hero__deco-item:nth-child(3) { left: 51.5%; top: 54.2%; width: 39.1%; }
+/* coin1   388×349  x≈5   y≈1700 */
+.hero__deco--right .hero__deco-item:nth-child(4) { left:  0.4%; top: 69.2%; width: 29.8%; }
+/* coin2   356×354  x≈780 y≈1990 */
+.hero__deco--right .hero__deco-item:nth-child(5) { left: 60.0%; top: 81.1%; width: 27.4%; }
 
 /* 히어로 콘텐츠 래퍼 */
 .hero__content {
