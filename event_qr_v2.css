@@ -1491,3 +1491,70 @@ a {
     display: none;
   }
 }
+
+
+/* ═══════════════════════════════════════════
+   FLOATING BANNER (≥1400px only)
+═══════════════════════════════════════════ */
+#fb-wrap {
+  display: none;
+  position: fixed;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9000;
+  width: 384px;
+}
+
+@media (min-width: 1400px) {
+  #fb-wrap {
+    display: block;
+  }
+}
+
+#fb-toggle {
+  display: block;
+  width: 373px;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+#fb-tab-img {
+  display: block;
+  width: 100%;
+}
+
+#fb-body {
+  overflow: hidden;
+  max-height: 700px;
+  opacity: 1;
+  transition: max-height 0.45s ease, opacity 0.35s ease;
+}
+
+#fb-wrap.fb-collapsed #fb-body {
+  max-height: 0;
+  opacity: 0;
+}
+
+#fb-phone {
+  position: relative;
+  width: 384px;
+}
+
+#fb-phone > img {
+  display: block;
+  width: 100%;
+}
+
+#fb-phone iframe {
+  position: absolute;
+  top: 70px;
+  left: 32px;
+  width: 320px;
+  height: 572px;
+  border: none;
+}
