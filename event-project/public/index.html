@@ -391,6 +391,28 @@
 
 
   <!-- ══════════════════════════════════════
+  FLOATING BANNER (≥1400px)
+══════════════════════════════════════ -->
+  <div id="fb-wrap">
+    <button id="fb-toggle" aria-label="앱 미리보기 접기/펼치기">
+      <img id="fb-tab-img" src="assets/flyingbanner_full.png" alt="">
+    </button>
+    <div id="fb-body">
+      <div id="fb-phone">
+        <img src="assets/phone_mockup.png" alt="피카플레이 앱 미리보기">
+        <iframe
+          src="https://beomjeong.github.io/client_pica/"
+          title="피카플레이 앱 미리보기"
+          loading="lazy"
+          scrolling="yes"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
   SCRIPTS
 ══════════════════════════════════════ -->
   <script>
@@ -511,6 +533,22 @@
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+  </script>
+
+  <script>
+    /* ── Floating Banner toggle ─────────── */
+    (function () {
+      var wrap   = document.getElementById('fb-wrap');
+      var btn    = document.getElementById('fb-toggle');
+      var tabImg = document.getElementById('fb-tab-img');
+      if (!wrap || !btn) return;
+      btn.addEventListener('click', function () {
+        var collapsed = wrap.classList.toggle('fb-collapsed');
+        tabImg.src = collapsed
+          ? 'assets/flyingbanner_mini.png'
+          : 'assets/flyingbanner_full.png';
+      });
+    })();
   </script>
 
   <script>
