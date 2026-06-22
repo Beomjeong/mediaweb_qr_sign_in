@@ -1500,8 +1500,7 @@ a {
   display: none;
   position: fixed;
   right: 10%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: calc(50% - 380px);
   z-index: 9000;
   width: 384px;
 }
